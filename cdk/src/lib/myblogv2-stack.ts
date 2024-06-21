@@ -100,7 +100,7 @@ export class Myblogv2Stack extends cdk.Stack {
     const buildOutput = new pipeline.Artifact();
     const sourceAction = new pipelineactions.CodeStarConnectionsSourceAction({
       actionName: "GitHub",
-      owner: "aws",
+      owner: "Flupinochan",
       repo: "MyBlogV2",
       branch: "master",
       output: buildOutput,
