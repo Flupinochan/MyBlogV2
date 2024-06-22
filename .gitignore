@@ -1,7 +1,6 @@
-package.json
 package-lock.json
-*node_modules*
-*python*
+node_modules*
+python*
 .vscode
 *.d.ts
 node_modules

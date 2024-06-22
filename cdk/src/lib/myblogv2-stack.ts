@@ -32,6 +32,7 @@ export class Myblogv2Stack extends cdk.Stack {
     // リージョンは、us-east-1
     const certificateArn = param.cloudfront.certificateArn;
     const certificate = certmgr.Certificate.fromCertificateArn(this, "MyBlogV2Certificate", certificateArn);
+    const apigwEndpoint = cdk.Fn.importValue("apigwDomainName");
     const distribution = new cloudfront.Distribution(this, "cloudfront", {
       defaultBehavior: {
         origin: new origins.S3Origin(s3Bucket),
@@ -39,6 +40,16 @@ export class Myblogv2Stack extends cdk.Stack {
         viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         allowedMethods: cloudfront.AllowedMethods.ALLOW_GET_HEAD_OPTIONS,
         cachePolicy: cloudfront.CachePolicy.CACHING_OPTIMIZED,
+      },
+      additionalBehaviors: {
+        "/api/*": {
+          origin: new origins.HttpOrigin(apigwEndpoint),
+          compress: true,
+          viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+          allowedMethods: cloudfront.AllowedMethods.ALLOW_ALL,
+          cachePolicy: cloudfront.CachePolicy.CACHING_DISABLED,
+          originRequestPolicy: cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER,
+        },
       },
       certificate: certificate,
       defaultRootObject: "index.html",
