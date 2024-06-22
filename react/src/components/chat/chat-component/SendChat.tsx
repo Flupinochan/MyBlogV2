@@ -11,6 +11,7 @@ export const sendChat = async (chat: ChatContent): Promise<ChatContent> => {
   const postConfig = {
     headers: {
       "Content-Type": "application/json",
+      Referer: "validate-cfn",
     },
   };
   try {
