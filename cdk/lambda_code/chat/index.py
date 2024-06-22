@@ -95,9 +95,9 @@ def create_message(event):
             "role": response_content["role"],
             "text": response_content["content"][0]["text"],
         }
-        response_body = json.dumps(response_format)
-        log.debug(f"response_body is: {response_body}")
-        return response_body
+        # response_body = json.dumps(response_format)
+        log.debug(f"response_body is: {response_format}")
+        return response_format
     except Exception as e:
         log.error(f"エラーが発生しました: {e}")
         raise
@@ -112,13 +112,22 @@ class ChatDict(TypedDict):
 
 
 @xray_recorder.capture("lambda_handler")
-def lambda_handler(event: ChatDict, context):
+def lambda_handler(event, context):
     try:
         # model_list = model_client.list_foundation_models()["modelSummaries"]
         # log.debug(f"model_list: {model_list}")
         log.debug(f"event: {event}")
+        event: ChatDict = json.loads(event["body"])
+        log.debug(f"event: {event}")
         response: ChatDict = main(event)
-        return response
+        response_body = {
+            "isBase64Encoded": False,
+            "statusCode": 200,
+            "headers": {"Content-Type": "application/json"},
+            "body": json.dumps(response),
+        }
+        log.debug(f"response_body is: {response_body}")
+        return response_body
     except Exception as e:
         log.error(f"エラーが発生しました: {e}")
         raise

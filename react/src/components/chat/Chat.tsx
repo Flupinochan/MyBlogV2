@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import axios from "axios";
 import { Button } from "@nextui-org/button";
 import { Textarea } from "@nextui-org/input";
 
@@ -20,9 +19,9 @@ const Chat: React.FC = () => {
           role: "user",
           message: textareaRef.current.value,
         };
-        setDisplayText([...displayText, chat]);
+        setDisplayText((prev) => [...prev, chat]);
         const response = await sendChat(chat);
-        setDisplayText([...displayText, response]);
+        setDisplayText((prev) => [...prev, response]);
       } catch (error) {
         console.error("Failed to send chat:", error);
       }
