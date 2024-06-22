@@ -21,6 +21,7 @@ const Chat: React.FC = () => {
         };
         setDisplayText((prev) => [...prev, chat]);
         const response = await sendChat(chat);
+        console.log(response);
         setDisplayText((prev) => [...prev, response]);
       } catch (error) {
         console.error("Failed to send chat:", error);
