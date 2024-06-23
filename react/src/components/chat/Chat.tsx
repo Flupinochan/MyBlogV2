@@ -9,7 +9,8 @@ import { Hub } from "aws-amplify/utils";
 import "@aws-amplify/ui-react/styles.css";
 
 import { sendChat } from "./chat-component/SendChat";
-import awsconfig from "../../aws-exports";
+import awsconfig from "./chat-component/aws-exports";
+import pubsubconfig from "./chat-component/pubsub-config";
 
 // https://zenn.dev/dove/articles/63494de652511c
 // https://ui.docs.amplify.aws/react/connected-components/authenticator
@@ -17,8 +18,9 @@ import awsconfig from "../../aws-exports";
 Amplify.configure(awsconfig);
 // https://docs.amplify.aws/gen1/react/build-a-backend/more-features/pubsub
 const pubsub = new PubSub({
-  region: "us-west-2",
-  endpoint: "wss://atiwkw1dtx972-ats.iot.us-west-2.amazonaws.com/mqtt",
+  region: pubsubconfig.region,
+  endpoint: pubsubconfig.endpoint,
+  clientId: pubsubconfig.clientId,
 });
 
 interface ChatContent {
@@ -29,16 +31,25 @@ interface ChatContent {
 const Chat: React.FC = () => {
   // 認証情報取得
   const [userName, setUserName] = useState<string>(""); // ユーザ名はTopic名にする
+  const [session, setSession] = useState<any>(null);
   useEffect(() => {
     getAuthenticatedUser();
   }, []);
   const getAuthenticatedUser = async () => {
-    const { username, signInDetails } = await getCurrentUser();
+    const { username, userId, signInDetails } = await getCurrentUser();
+    const session = await fetchAuthSession({ forceRefresh: true });
     setUserName(username);
-    const { tokens: session } = await fetchAuthSession();
-    console.log("username:", username);
-    // console.log("session:", session);
-    // console.log("signInDetails:", signInDetails);
+    setSession(session);
+    // if (userName && session.tokens && session.credentials) {
+    //   console.log("username", username);
+    //   console.log("accessKey", session.credentials.accessKeyId);
+    //   console.log("secretKey", session.credentials.secretAccessKey);
+    //   console.log("sessionToken", session.credentials.sessionToken);
+    //   console.log("id token", session.tokens.idToken);
+    //   console.log("access token", session.tokens.accessToken);
+    // } else {
+    //   console.error("Session are undefined");
+    // }
   };
 
   // Chat送信
@@ -75,7 +86,6 @@ const Chat: React.FC = () => {
       sub.unsubscribe();
     };
   }, [userName]);
-
   // IoTメッセージの送信
   const pub = async () => {
     try {

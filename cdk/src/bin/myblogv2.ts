@@ -4,6 +4,7 @@ import * as cdk from "aws-cdk-lib";
 import { Myblogv2Stack } from "../lib/myblogv2-stack";
 import { Myblogv2Stack2 } from "../lib/myblogv2-stack2";
 import { Myblogv2Stack3 } from "../lib/myblogv2-stack3";
+import { Myblogv2Stack4 } from "../lib/myblogv2-stack4";
 import { MyBlogParamV2 } from "../lib/parameters";
 import * as apigw from "aws-cdk-lib/aws-apigateway";
 
@@ -18,4 +19,8 @@ const stack2 = new Myblogv2Stack2(app, "Myblogv2Stack2", {
 const stack3 = new Myblogv2Stack3(app, "Myblogv2Stack3", {
   env: { region: param.env.region },
 });
+const stack4 = new Myblogv2Stack4(app, "Myblogv2Stack4", {
+  env: { region: param.env.region },
+});
 stack1.addDependency(stack2);
+stack1.addDependency(stack4);
