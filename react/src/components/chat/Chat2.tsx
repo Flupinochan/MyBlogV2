@@ -184,7 +184,7 @@ const Chat2: React.FC = () => {
       <div className="p-2" />
       <div className="flex">
         <p className="w-1/2 text-green-500">Claudeの選ばれた回数 {claudeCount}</p>
-        <p className="text-amber-400">GPTの選ばれた回数 {gptCount}</p>
+        <p className="text-amber-400">Chat GPTの選ばれた回数 {gptCount}</p>
       </div>
       <div className="p-2" />
       <Textarea color="primary" ref={textareaRef} placeholder="メッセージを入力する" variant="bordered" minRows={1} className="max-w-md" />
@@ -227,7 +227,7 @@ const Chat2: React.FC = () => {
                   <p className="border-amber-500 border-b-1">{chat.message}</p>
                   <div className="p-2" />
                   <Button className="text-amber-500 border-amber-500" variant="ghost" onClick={mergeGPT}>
-                    GPTを選ぶ
+                    Chat GPTを選ぶ
                   </Button>
                 </>
               )}
