@@ -1,12 +1,5 @@
 import * as cdk from "aws-cdk-lib";
-import * as s3 from "aws-cdk-lib/aws-s3";
-import * as cloudfront from "aws-cdk-lib/aws-cloudfront";
-import * as origins from "aws-cdk-lib/aws-cloudfront-origins";
-import * as certmgr from "aws-cdk-lib/aws-certificatemanager";
 import * as iam from "aws-cdk-lib/aws-iam";
-import * as pipeline from "aws-cdk-lib/aws-codepipeline";
-import * as pipelineactions from "aws-cdk-lib/aws-codepipeline-actions";
-import * as codebuild from "aws-cdk-lib/aws-codebuild";
 import * as logs from "aws-cdk-lib/aws-logs";
 import * as apigw from "aws-cdk-lib/aws-apigateway";
 import * as lambda from "aws-cdk-lib/aws-lambda";

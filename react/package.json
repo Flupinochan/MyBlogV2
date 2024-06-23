@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@aws-amplify/auth": "^6.3.6",
+    "@aws-amplify/pubsub": "^6.1.10",
+    "@aws-amplify/ui-react": "^6.1.12",
     "@nextui-org/react": "^2.4.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -11,6 +14,7 @@
     "@types/node": "^16.18.101",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "aws-amplify": "^6.3.7",
     "axios": "^1.7.2",
     "framer-motion": "^11.2.11",
     "react": "^18.3.1",

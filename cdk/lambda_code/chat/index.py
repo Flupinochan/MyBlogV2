@@ -93,7 +93,7 @@ def create_message(event):
         response_content = json.loads(response["body"].read())
         response_format = {
             "role": response_content["role"],
-            "text": response_content["content"][0]["text"],
+            "message": response_content["content"][0]["text"],
         }
         # response_body = json.dumps(response_format)
         log.debug(f"response_body is: {response_format}")
