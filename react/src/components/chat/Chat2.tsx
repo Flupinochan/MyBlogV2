@@ -173,69 +173,69 @@ const Chat2: React.FC = () => {
   /// Display ///
   ///////////////
   return (
-    <Authenticator>
-      <div className="p-10">
-        <div className="flex">
-          <p className="pr-20">{loginId} さん　こんにちは!!</p>
-          <p className="text-2xl">
-            <span className="whitespace-nowrap text-green-500">Claude</span> VS <span className="text-amber-400">GPT</span>
-          </p>
-        </div>
-        <div className="p-2" />
-        <div className="flex">
-          <p className="w-1/2 text-green-500">Claudeの選ばれた回数 {claudeCount}</p>
-          <p className="text-amber-400">GPTの選ばれた回数 {gptCount}</p>
-        </div>
-        <div className="p-2" />
-        <Textarea color="primary" ref={textareaRef} placeholder="メッセージを入力する" variant="bordered" minRows={1} className="max-w-md" />
-        <div className="p-2" />
-        <Button color="primary" variant="ghost" onClick={sendChatOnClick} isLoading={!isTrue}>
-          送信
-        </Button>
-        <div className="p-2" />
-        {displayText.map((chat, index) => (
-          <div key={index}>
-            {/* Roleが前回と異なる場合、roleを表示 */}
-            {index === 0 || chat.role !== displayText[index - 1].role ? <p className={chat.role === "user" ? "text-blue-500" : "text-red-500"}>{chat.role}</p> : null}
-            <p className={chat.role === "user" ? "text-blue-500 border-blue-500 border-b-1" : "text-red-500 border-red-500 border-b-1"}>{chat.message}</p>
-          </div>
-        ))}
-        <div className="flex">
-          {tmpClaude &&
-            tmpClaude.length > 0 &&
-            tmpClaude.map((chat, index) => (
-              <div key={index} className="text-green-500 w-1/2">
-                {chat.role === "claude" && (
-                  <>
-                    {index === 0 || chat.role !== tmpClaude[index - 1]?.role ? <p>{chat.role}</p> : null}
-                    <p className="border-green-500 border-b-1">{chat.message}</p>
-                    <div className="p-2" />
-                    <Button className="text-green-500 border-green-500" variant="ghost" onClick={mergeClaude}>
-                      Claudeを選ぶ
-                    </Button>
-                  </>
-                )}
-              </div>
-            ))}
-          {tmpGPT &&
-            tmpGPT.length > 0 &&
-            tmpGPT.map((chat, index) => (
-              <div key={index} className="text-amber-500 w-1/2 ml-auto">
-                {chat.role === "gpt" && (
-                  <>
-                    {index === 0 || chat.role !== tmpGPT[index - 1]?.role ? <p>{chat.role}</p> : null}
-                    <p className="border-amber-500 border-b-1">{chat.message}</p>
-                    <div className="p-2" />
-                    <Button className="text-amber-500 border-amber-500" variant="ghost" onClick={mergeGPT}>
-                      GPTを選ぶ
-                    </Button>
-                  </>
-                )}
-              </div>
-            ))}
-        </div>
+    // <Authenticator>
+    <div className="p-10">
+      <div className="flex">
+        {/* <p className="pr-20">{loginId} さん　こんにちは!!</p> */}
+        <p className="text-2xl">
+          <span className="whitespace-nowrap text-green-500">Claude</span> VS <span className="text-amber-400">Chat GPT</span>
+        </p>
       </div>
-    </Authenticator>
+      <div className="p-2" />
+      <div className="flex">
+        <p className="w-1/2 text-green-500">Claudeの選ばれた回数 {claudeCount}</p>
+        <p className="text-amber-400">GPTの選ばれた回数 {gptCount}</p>
+      </div>
+      <div className="p-2" />
+      <Textarea color="primary" ref={textareaRef} placeholder="メッセージを入力する" variant="bordered" minRows={1} className="max-w-md" />
+      <div className="p-2" />
+      <Button color="primary" variant="ghost" onClick={sendChatOnClick} isLoading={!isTrue}>
+        送信
+      </Button>
+      <div className="p-2" />
+      {displayText.map((chat, index) => (
+        <div key={index}>
+          {/* Roleが前回と異なる場合、roleを表示 */}
+          {index === 0 || chat.role !== displayText[index - 1].role ? <p className={chat.role === "user" ? "text-blue-500" : "text-red-500"}>{chat.role}</p> : null}
+          <p className={chat.role === "user" ? "text-blue-500 border-blue-500 border-b-1" : "text-red-500 border-red-500 border-b-1"}>{chat.message}</p>
+        </div>
+      ))}
+      <div className="flex">
+        {tmpClaude &&
+          tmpClaude.length > 0 &&
+          tmpClaude.map((chat, index) => (
+            <div key={index} className="text-green-500 w-1/2">
+              {chat.role === "claude" && (
+                <>
+                  {index === 0 || chat.role !== tmpClaude[index - 1]?.role ? <p>{chat.role}</p> : null}
+                  <p className="border-green-500 border-b-1">{chat.message}</p>
+                  <div className="p-2" />
+                  <Button className="text-green-500 border-green-500" variant="ghost" onClick={mergeClaude}>
+                    Claudeを選ぶ
+                  </Button>
+                </>
+              )}
+            </div>
+          ))}
+        {tmpGPT &&
+          tmpGPT.length > 0 &&
+          tmpGPT.map((chat, index) => (
+            <div key={index} className="text-amber-500 w-1/2 ml-auto">
+              {chat.role === "gpt" && (
+                <>
+                  {index === 0 || chat.role !== tmpGPT[index - 1]?.role ? <p>{chat.role}</p> : null}
+                  <p className="border-amber-500 border-b-1">{chat.message}</p>
+                  <div className="p-2" />
+                  <Button className="text-amber-500 border-amber-500" variant="ghost" onClick={mergeGPT}>
+                    GPTを選ぶ
+                  </Button>
+                </>
+              )}
+            </div>
+          ))}
+      </div>
+    </div>
+    // </Authenticator>
   );
 };
 
