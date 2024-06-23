@@ -8,13 +8,15 @@ import Chat2 from "./components/chat/Chat2";
 
 const App: React.FC = () => {
   return (
-    <div className="h-screen dark text-foreground bg-background">
+    <div className="min-h-screen bg-background text-foreground dark">
       <NextUIProvider>
-        <Router>
-          <Helmet />
-          {/* <Chat /> */}
-          <Chat2 />
-        </Router>
+        <main className="min-h-screen">
+          <Router>
+            <Helmet />
+            {/* <Chat /> */}
+            <Chat2 />
+          </Router>
+        </main>
       </NextUIProvider>
     </div>
   );
