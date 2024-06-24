@@ -16,6 +16,7 @@ import rehypeRaw from "rehype-raw";
 import awsconfig from "./chat-component/aws-exports";
 import { GetHistory } from "./chat-component/GetHistory";
 import { PostHistory } from "./chat-component/PostHistory";
+import { DeleteHistory } from "./chat-component/DeleteHistory";
 
 // https://zenn.dev/dove/articles/63494de652511c
 // https://ui.docs.amplify.aws/react/connected-components/authenticator
@@ -206,6 +207,14 @@ const Chat2: React.FC = () => {
     setIsTrue(true);
     setPendingPostHistory(true);
   };
+  ///////////////////////////
+  /// Delete Chat History ///
+  ///////////////////////////
+  const deleteChatOnClick = () => {
+    setDisplayText([]);
+    DeleteHistory(loginId);
+  };
+
   ///////////////
   /// Display ///
   ///////////////
@@ -226,8 +235,11 @@ const Chat2: React.FC = () => {
         <div className="p-2" />
         <Textarea color="primary" ref={textareaRef} placeholder="メッセージを入力する" variant="bordered" minRows={1} className="max-w-md" />
         <div className="p-2" />
-        <Button color="primary" variant="ghost" onClick={sendChatOnClick} isLoading={!isTrue}>
+        <Button color="primary" variant="ghost" onClick={sendChatOnClick} isLoading={!isTrue} className="mr-10">
           送信
+        </Button>
+        <Button color="primary" variant="ghost" onClick={deleteChatOnClick} isLoading={!isTrue}>
+          履歴削除
         </Button>
         <div className="p-2" />
         {displayText &&

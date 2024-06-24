@@ -173,6 +173,9 @@ export class Myblogv2Stack2 extends cdk.Stack {
     ////////////////////
     /// Chat History ///
     ////////////////////
+    ///////////
+    /// GET ///
+    ///////////
     const apiGetHistory = apigwLambda.root.addResource("gethistory");
     apiGetHistory.addMethod(
       "GET",
@@ -190,9 +193,32 @@ export class Myblogv2Stack2 extends cdk.Stack {
         ],
       },
     );
+    ////////////
+    /// POST ///
+    ////////////
     const apiPostHistory = apigwLambda.root.addResource("posthistory");
     apiPostHistory.addMethod(
       "POST",
+      new apigw.LambdaIntegration(lambdaChatDB, {
+        proxy: true,
+      }),
+      {
+        methodResponses: [
+          {
+            statusCode: "200",
+            responseModels: {
+              "application/json": apigw.Model.EMPTY_MODEL,
+            },
+          },
+        ],
+      },
+    );
+    //////////////
+    /// DELETE ///
+    //////////////
+    const apiDeleteHistory = apigwLambda.root.addResource("deletehistory");
+    apiDeleteHistory.addMethod(
+      "DELETE",
       new apigw.LambdaIntegration(lambdaChatDB, {
         proxy: true,
       }),

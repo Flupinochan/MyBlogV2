@@ -57,6 +57,9 @@ def main(event):
         elif event["path"] == "/posthistory":
             response = post_chat_history(event)
             log.debug("Post Chat History")
+        elif event["path"] == "/deletehistory":
+            response = delete_chat_history(event)
+            log.debug("Delete Chat History")
         return response
 
     except Exception as e:
@@ -161,6 +164,33 @@ def post_chat_history(event):
             log.error(f"エラーが発生しました: {e}")
             raise
 
+        return response
+    except Exception as e:
+        log.error(f"エラーが発生しました: {e}")
+        raise
+
+
+# ----------------------------------------------------------------------
+# Delete Chat History
+# ----------------------------------------------------------------------
+# @xray_recorder.capture("elete_chat_history")
+def elete_chat_history(event):
+    try:
+        login_id = event["queryStringParameters"]["loginid"]
+        dynamodb_client.delete_item(
+            TableName=DYNAMODB_TABLE,
+            Key={
+                PRIMARY_KEY: {
+                    "S": login_id,
+                }
+            },
+        )
+        status_code = 200
+        response_data = None
+        response = {
+            "statusCode": status_code,
+            "body": json.dumps(response_data),
+        }
         return response
     except Exception as e:
         log.error(f"エラーが発生しました: {e}")
