@@ -14,8 +14,11 @@ export const GetHistory = async (loginid: string): Promise<ChatContent[]> => {
   // CloudFrontでヘッダーを追加する
   try {
     const response = await axios.get(api_url, { params: params });
-    if (response.status === 200) {
+    // if (response.status === 200) {
+    console.log(response);
+    if (response.data) {
       console.log(`Get History: ${response.status}`);
+      console.log(`Response Data: ${response.data}`);
       return response.data;
     } else if (response.status === 204) {
       console.log(`Get History: ${response.status}`);
