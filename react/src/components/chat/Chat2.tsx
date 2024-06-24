@@ -123,8 +123,8 @@ const Chat2: React.FC = () => {
         }
       };
       getChatHistory();
+      console.log("loginId: ", loginId);
     }
-    console.log("loginId: ", loginId);
   }, [loginId]); // loginIdが取得できたら実行する
 
   ////////////////////
@@ -157,7 +157,6 @@ const Chat2: React.FC = () => {
   useEffect(() => {
     if (pendingPostHistory) {
       const postChatHistory = async () => {
-        console.log("Post History");
         const postHistoryChat = {
           loginid: loginId,
           content: displayText,

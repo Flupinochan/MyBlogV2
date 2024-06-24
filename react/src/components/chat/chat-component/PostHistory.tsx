@@ -20,7 +20,8 @@ export const PostHistory = async (hist: history) => {
     },
   };
   try {
-    await axios.post(api_url, requestBody, postConfig);
+    const response = await axios.post(api_url, requestBody, postConfig);
+    console.log(`Post History: ${response.status}`);
   } catch (error) {
     console.error("Failed to send chat:", error);
     throw new Error("Failed to send chat");

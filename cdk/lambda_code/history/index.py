@@ -163,7 +163,12 @@ def post_chat_history(event):
         except Exception as e:
             log.error(f"エラーが発生しました: {e}")
             raise
-
+        status_code = 200
+        response_data = None
+        response = {
+            "statusCode": status_code,
+            "body": json.dumps(response_data),
+        }
         return response
     except Exception as e:
         log.error(f"エラーが発生しました: {e}")
