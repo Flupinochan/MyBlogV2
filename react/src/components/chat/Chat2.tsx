@@ -33,17 +33,31 @@ const Chat2: React.FC = () => {
   /// Authentication ///
   //////////////////////
   const [loginId, setLoginId] = useState<string>("");
-  useEffect(() => {
-    const getAuthenticatedUser = async () => {
-      const { username, userId, signInDetails } = await getCurrentUser();
-      const session = await fetchAuthSession({ forceRefresh: true });
-      if (signInDetails?.loginId) {
-        setLoginId(signInDetails.loginId);
+  // useEffect(() => {
+  //   const getAuthenticatedUser = async () => {
+  //     const { username, userId, signInDetails } = await getCurrentUser();
+  //     const session = await fetchAuthSession({ forceRefresh: true });
+  //     if (signInDetails?.loginId) {
+  //       setLoginId(signInDetails.loginId);
+  //     }
+  //   };
+  //   getAuthenticatedUser();
+  // }, []);
+  const getAuthenticatedUser = async () => {
+    const { username, userId, signInDetails } = await getCurrentUser();
+    const session = await fetchAuthSession({ forceRefresh: true });
+    if (signInDetails?.loginId) {
+      setLoginId(signInDetails.loginId);
+    }
+  };
+  // Hubで認証関連(サインアップやサインアウト)のイベントリスナーを設定可能
+  Hub.listen("auth", async (data) => {
+    switch (data.payload.event) {
+      case "signedIn": {
+        getAuthenticatedUser();
       }
-    };
-    getAuthenticatedUser();
-  }, [loginId]);
-
+    }
+  });
   ///////////////////////////////////////////////////
   /// Initial Setting & Websocket Recieve Message ///
   ///////////////////////////////////////////////////
