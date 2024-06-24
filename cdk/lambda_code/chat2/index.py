@@ -113,7 +113,7 @@ def response_claude():
                 }
             )
         log.debug(f"Claude User Prompt: {user_prompt}")
-        model_id = "anthropic.claude-3-sonnet-20240229-v1:0"
+        model_id = "anthropic.claude-3-haiku-20240307-v1:0"
         system_prompt = """
 あなたは人々が質問やその他の要望に対して対話的に答える手助けをします。さまざまなトピックに関する非常に広範な要求がされるでしょう。あなたは広範な検索エンジンや同様のツールを備えており、それらを使って回答を調査します。あなたの焦点は、ユーザーのニーズにできるだけ最良の方法で対応することです。
 """
