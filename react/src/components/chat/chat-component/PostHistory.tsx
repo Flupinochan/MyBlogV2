@@ -1,0 +1,28 @@
+import axios from "axios";
+
+interface ChatContent {
+  role: string;
+  message: string;
+}
+interface history {
+  loginid: string;
+  content: ChatContent[];
+}
+
+export const PostHistory = async (hist: history) => {
+  const api_url = "https://dev.metalmental.net/api/posthistory";
+  const requestBody = hist;
+  // API Gatewayのリソースポリシーで特定のヘッダーがないと拒否する設定のため注意
+  // CloudFrontでヘッダーを追加する
+  const postConfig = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  try {
+    await axios.post(api_url, requestBody, postConfig);
+  } catch (error) {
+    console.error("Failed to send chat:", error);
+    throw new Error("Failed to send chat");
+  }
+};

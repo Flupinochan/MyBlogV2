@@ -137,7 +137,7 @@ export class Myblogv2Stack3 extends cdk.Stack {
     });
     const iotPolicyPrincipalAttachment = new iot.CfnPolicyPrincipalAttachment(this, "iotPolicyPrincipalAttachment", {
       policyName: iotPolicy.policyName as string,
-      principal: cognitoIdentityPool.ref,
+      principal: param.cognito.userIdentityId,
     });
     iotPolicyPrincipalAttachment.node.addDependency(iotPolicy);
   }

@@ -14,6 +14,8 @@ import rehypeKatex from "rehype-katex";
 import rehypeRaw from "rehype-raw";
 
 import awsconfig from "./chat-component/aws-exports";
+import { GetHistory } from "./chat-component/GetHistory";
+import { PostHistory } from "./chat-component/PostHistory";
 
 // https://zenn.dev/dove/articles/63494de652511c
 // https://ui.docs.amplify.aws/react/connected-components/authenticator
@@ -38,6 +40,7 @@ const Chat2: React.FC = () => {
     const session = await fetchAuthSession({ forceRefresh: true });
     if (signInDetails?.loginId) {
       setLoginId(signInDetails.loginId);
+      console.log("loginId: ", loginId);
     }
   };
 
@@ -50,6 +53,7 @@ const Chat2: React.FC = () => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [wsStatus, setWsStatus] = useState<WebSocket | null>(null);
   const [pendingMessage, setPendingMessage] = useState<ChatContent | null>(null);
+  const [pendingPostHistory, setPendingPostHistory] = useState<boolean>(false);
   const [isTrue, setIsTrue] = useState<boolean>(true);
   useEffect(() => {
     const wsURL = "wss://dev.metalmental.net/websocket/";
@@ -106,6 +110,20 @@ const Chat2: React.FC = () => {
       };
     };
     initWebSocket();
+    ///////////////////
+    /// Get History ///
+    ///////////////////
+    const getChatHistory = async () => {
+      try {
+        const response = await GetHistory(loginId);
+        setDisplayText(response);
+      } catch (error) {
+        console.error("Failed to get chat history:", error);
+      }
+    };
+    getChatHistory();
+    console.log("Get History: ");
+    console.log(`${displayText}`);
   }, []);
 
   ////////////////////
@@ -129,6 +147,19 @@ const Chat2: React.FC = () => {
       };
 
       sendMessages();
+    }
+    ////////////////////
+    /// Post History ///
+    ////////////////////
+    if (pendingPostHistory) {
+      console.log("Post History:");
+      console.log(`${displayText}`);
+      const postHistoryChat = {
+        loginid: loginId,
+        content: displayText,
+      };
+      PostHistory(postHistoryChat);
+      setPendingPostHistory(false);
     }
   }, [displayText, pendingMessage, wsStatus]);
 
@@ -164,6 +195,7 @@ const Chat2: React.FC = () => {
     setTmpGPT([]);
     setClaudeCount((prev) => prev + 1);
     setIsTrue(true);
+    setPendingPostHistory(true);
   };
   const mergeGPT = () => {
     const updatedArray = tmpGPT.map((item) => ({ ...item, role: "assistant" }));
@@ -172,76 +204,82 @@ const Chat2: React.FC = () => {
     setTmpClaude([]);
     setGptCount((prev) => prev + 1);
     setIsTrue(true);
+    setPendingPostHistory(true);
   };
-
   ///////////////
   /// Display ///
   ///////////////
   return (
-    // <Authenticator>
-    <div className="p-10">
-      <div className="flex">
-        {/* <p className="pr-20">{loginId} さん　こんにちは!!</p> */}
-        <p className="text-2xl">
-          <span className="whitespace-nowrap text-green-500">Claude</span> VS <span className="text-amber-400">Chat GPT</span>
-        </p>
-      </div>
-      <div className="p-2" />
-      <div className="flex">
-        <p className="w-1/2 text-green-500">Claudeの選ばれた回数 {claudeCount}</p>
-        <p className="text-amber-400">Chat GPTの選ばれた回数 {gptCount}</p>
-      </div>
-      <div className="p-2" />
-      <Textarea color="primary" ref={textareaRef} placeholder="メッセージを入力する" variant="bordered" minRows={1} className="max-w-md" />
-      <div className="p-2" />
-      <Button color="primary" variant="ghost" onClick={sendChatOnClick} isLoading={!isTrue}>
-        送信
-      </Button>
-      <div className="p-2" />
-      {displayText.map((chat, index) => (
-        <div key={index}>
-          {/* Roleが前回と異なる場合、roleを表示 */}
-          {index === 0 || chat.role !== displayText[index - 1].role ? <p className={chat.role === "user" ? "text-blue-500" : "text-red-500"}>{chat.role}</p> : null}
-          {/* <p className={chat.role === "user" ? "text-blue-500 border-blue-500 border-b-1" : "text-red-500 border-red-500 border-b-1"}>{chat.message}</p> */}
-          <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className={chat.role === "user" ? "prose md:prose-lg lg:prose-xl text-blue-500 border-blue-500 border-b-1" : "red-base prose md:prose-lg lg:prose-xl text-red-500 border-red-500 border-b-1"}>{chat.message}</ReactMarkdown>
+    <Authenticator>
+      <div className="p-10">
+        <div className="flex">
+          <p className="pr-10">{loginId} さん　こんにちは!!</p>
+          <p className="text-2xl">
+            <span className="whitespace-nowrap text-green-500">Claude</span> VS <span className="text-amber-400">Chat GPT</span>
+          </p>
         </div>
-      ))}
-      <div className="flex">
-        {tmpClaude &&
-          tmpClaude.length > 0 &&
-          tmpClaude.map((chat, index) => (
-            <div key={index} className="green-base text-green-500 w-1/2">
-              {chat.role === "claude" && (
-                <>
-                  {index === 0 || chat.role !== tmpClaude[index - 1]?.role ? <p>{chat.role}</p> : null}
-                  <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className="prose md:prose-lg lg:prose-xl text-green-500 border-green-500 border-b-1">{chat.message}</ReactMarkdown>
-                  <div className="p-2" />
-                  <Button className="text-green-500 border-green-500" variant="ghost" onClick={mergeClaude}>
-                    Claudeを選ぶ
-                  </Button>
-                </>
-              )}
-            </div>
-          ))}
-        {tmpGPT &&
-          tmpGPT.length > 0 &&
-          tmpGPT.map((chat, index) => (
-            <div key={index} className="amber-base text-amber-500 w-1/2 ml-auto">
-              {chat.role === "gpt" && (
-                <>
-                  {index === 0 || chat.role !== tmpGPT[index - 1]?.role ? <p>{chat.role}</p> : null}
-                  <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className="prose md:prose-lg lg:prose-xl text-amber-500 border-amber-500 border-b-1">{chat.message}</ReactMarkdown>
-                  <div className="p-2" />
-                  <Button className="text-amber-500 border-amber-500" variant="ghost" onClick={mergeGPT}>
-                    Chat GPTを選ぶ
-                  </Button>
-                </>
-              )}
-            </div>
-          ))}
+        <div className="p-2" />
+        <div className="flex">
+          <p className="w-1/2 text-green-500">Claudeの選ばれた回数 {claudeCount}</p>
+          <p className="text-amber-400">Chat GPTの選ばれた回数 {gptCount}</p>
+        </div>
+        <div className="p-2" />
+        <Textarea color="primary" ref={textareaRef} placeholder="メッセージを入力する" variant="bordered" minRows={1} className="max-w-md" />
+        <div className="p-2" />
+        <Button color="primary" variant="ghost" onClick={sendChatOnClick} isLoading={!isTrue}>
+          送信
+        </Button>
+        <div className="p-2" />
+        {displayText.map((chat, index) => (
+          <div key={index}>
+            {/* Roleが前回と異なる場合、roleを表示 */}
+            {index === 0 || chat.role !== displayText[index - 1].role ? <p className={chat.role === "user" ? "text-blue-500" : "text-red-500"}>{chat.role}</p> : null}
+            {/* <p className={chat.role === "user" ? "text-blue-500 border-blue-500 border-b-1" : "text-red-500 border-red-500 border-b-1"}>{chat.message}</p> */}
+            <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className={chat.role === "user" ? "prose md:prose-lg lg:prose-xl text-blue-500 border-blue-500 border-b-1" : "red-base prose md:prose-lg lg:prose-xl text-red-500 border-red-500 border-b-1"}>
+              {chat.message}
+            </ReactMarkdown>
+          </div>
+        ))}
+        <div className="flex">
+          {tmpClaude &&
+            tmpClaude.length > 0 &&
+            tmpClaude.map((chat, index) => (
+              <div key={index} className="green-base text-green-500 w-1/2">
+                {chat.role === "claude" && (
+                  <>
+                    {index === 0 || chat.role !== tmpClaude[index - 1]?.role ? <p>{chat.role}</p> : null}
+                    <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className="prose md:prose-lg lg:prose-xl text-green-500 border-green-500 border-b-1">
+                      {chat.message}
+                    </ReactMarkdown>
+                    <div className="p-2" />
+                    <Button className="text-green-500 border-green-500" variant="ghost" onClick={mergeClaude}>
+                      Claudeを選ぶ
+                    </Button>
+                  </>
+                )}
+              </div>
+            ))}
+          {tmpGPT &&
+            tmpGPT.length > 0 &&
+            tmpGPT.map((chat, index) => (
+              <div key={index} className="amber-base text-amber-500 w-1/2 ml-auto">
+                {chat.role === "gpt" && (
+                  <>
+                    {index === 0 || chat.role !== tmpGPT[index - 1]?.role ? <p>{chat.role}</p> : null}
+                    <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className="prose md:prose-lg lg:prose-xl text-amber-500 border-amber-500 border-b-1">
+                      {chat.message}
+                    </ReactMarkdown>
+                    <div className="p-2" />
+                    <Button className="text-amber-500 border-amber-500" variant="ghost" onClick={mergeGPT}>
+                      Chat GPTを選ぶ
+                    </Button>
+                  </>
+                )}
+              </div>
+            ))}
+        </div>
       </div>
-    </div>
-    // </Authenticator>
+    </Authenticator>
   );
 };
 

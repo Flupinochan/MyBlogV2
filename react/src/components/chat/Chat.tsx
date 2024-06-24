@@ -40,16 +40,17 @@ const Chat: React.FC = () => {
     const session = await fetchAuthSession({ forceRefresh: true });
     setUserName(username);
     setSession(session);
-    // if (userName && session.tokens && session.credentials) {
+    if (userName && session.tokens && session.credentials) {
+      console.log(session.identityId);
     //   console.log("username", username);
     //   console.log("accessKey", session.credentials.accessKeyId);
     //   console.log("secretKey", session.credentials.secretAccessKey);
     //   console.log("sessionToken", session.credentials.sessionToken);
     //   console.log("id token", session.tokens.idToken);
     //   console.log("access token", session.tokens.accessToken);
-    // } else {
-    //   console.error("Session are undefined");
-    // }
+    } else {
+      console.error("Session are undefined");
+    }
   };
 
   // Chat送信

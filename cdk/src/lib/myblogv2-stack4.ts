@@ -21,6 +21,9 @@ export class Myblogv2Stack4 extends cdk.Stack {
     //////////////////////////////////////////////////
     /// Lambda                                     ///
     //////////////////////////////////////////////////
+    ////////////
+    /// Chat ///
+    ////////////
     const lambdaRole = new iam.Role(this, param.lambda.roleName, {
       roleName: param.lambda.roleName,
       assumedBy: new iam.ServicePrincipal("lambda.amazonaws.com"),
