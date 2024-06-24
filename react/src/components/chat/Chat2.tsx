@@ -124,6 +124,7 @@ const Chat2: React.FC = () => {
     getChatHistory();
     console.log("Get History: ");
     console.log(`${displayText}`);
+    console.log("displayTextの型:", typeof displayText);
   }, []);
 
   ////////////////////
@@ -230,16 +231,18 @@ const Chat2: React.FC = () => {
           送信
         </Button>
         <div className="p-2" />
-        {displayText.map((chat, index) => (
-          <div key={index}>
-            {/* Roleが前回と異なる場合、roleを表示 */}
-            {index === 0 || chat.role !== displayText[index - 1].role ? <p className={chat.role === "user" ? "text-blue-500" : "text-red-500"}>{chat.role}</p> : null}
-            {/* <p className={chat.role === "user" ? "text-blue-500 border-blue-500 border-b-1" : "text-red-500 border-red-500 border-b-1"}>{chat.message}</p> */}
-            <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className={chat.role === "user" ? "prose md:prose-lg lg:prose-xl text-blue-500 border-blue-500 border-b-1" : "red-base prose md:prose-lg lg:prose-xl text-red-500 border-red-500 border-b-1"}>
-              {chat.message}
-            </ReactMarkdown>
-          </div>
-        ))}
+        {displayText &&
+          displayText.length > 0 &&
+          displayText.map((chat, index) => (
+            <div key={index}>
+              {/* Roleが前回と異なる場合、roleを表示 */}
+              {index === 0 || chat.role !== displayText[index - 1].role ? <p className={chat.role === "user" ? "text-blue-500" : "text-red-500"}>{chat.role}</p> : null}
+              {/* <p className={chat.role === "user" ? "text-blue-500 border-blue-500 border-b-1" : "text-red-500 border-red-500 border-b-1"}>{chat.message}</p> */}
+              <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className={chat.role === "user" ? "prose md:prose-lg lg:prose-xl text-blue-500 border-blue-500 border-b-1" : "red-base prose md:prose-lg lg:prose-xl text-red-500 border-red-500 border-b-1"}>
+                {chat.message}
+              </ReactMarkdown>
+            </div>
+          ))}
         <div className="flex">
           {tmpClaude &&
             tmpClaude.length > 0 &&
