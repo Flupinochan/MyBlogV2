@@ -3,7 +3,7 @@ import { Button } from "@nextui-org/button";
 import { Textarea } from "@nextui-org/input";
 import { Amplify } from "aws-amplify";
 import { Authenticator } from "@aws-amplify/ui-react";
-import { fetchAuthSession, getCurrentUser } from "aws-amplify/auth";
+import { fetchAuthSession, getCurrentUser, signOut } from "aws-amplify/auth";
 import { PubSub, CONNECTION_STATE_CHANGE, ConnectionState } from "@aws-amplify/pubsub";
 import { Hub } from "aws-amplify/utils";
 import "@aws-amplify/ui-react/styles.css";
@@ -32,17 +32,10 @@ const Chat2: React.FC = () => {
   //////////////////////
   /// Authentication ///
   //////////////////////
+  ///////////////////////
+  /// サインイン後処理 ///
+  ///////////////////////
   const [loginId, setLoginId] = useState<string>("");
-  // useEffect(() => {
-  //   const getAuthenticatedUser = async () => {
-  //     const { username, userId, signInDetails } = await getCurrentUser();
-  //     const session = await fetchAuthSession({ forceRefresh: true });
-  //     if (signInDetails?.loginId) {
-  //       setLoginId(signInDetails.loginId);
-  //     }
-  //   };
-  //   getAuthenticatedUser();
-  // }, []);
   const getAuthenticatedUser = async () => {
     const { username, userId, signInDetails } = await getCurrentUser();
     const session = await fetchAuthSession({ forceRefresh: true });
@@ -58,6 +51,12 @@ const Chat2: React.FC = () => {
       }
     }
   });
+  ///////////////////////
+  /// サインアウト処理 ///
+  ///////////////////////
+  const signOutOnClick = () => {
+    signOut();
+  };
   ///////////////////////////////////////////////////
   /// Initial Setting & Websocket Recieve Message ///
   ///////////////////////////////////////////////////
@@ -259,8 +258,11 @@ const Chat2: React.FC = () => {
         <Button color="primary" variant="ghost" onClick={sendChatOnClick} isLoading={!isTrue} className="mr-10">
           送信
         </Button>
-        <Button color="primary" variant="ghost" onClick={deleteChatOnClick} isLoading={!isTrue}>
+        <Button color="primary" variant="ghost" onClick={deleteChatOnClick} isLoading={!isTrue} className="mr-10">
           履歴削除
+        </Button>
+        <Button color="primary" variant="ghost" onClick={signOutOnClick} isLoading={!isTrue}>
+          サインアウト
         </Button>
         <div className="p-2" />
         {displayText &&
