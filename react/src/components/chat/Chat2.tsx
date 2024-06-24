@@ -113,18 +113,17 @@ const Chat2: React.FC = () => {
     ///////////////////
     /// Get History ///
     ///////////////////
-    const getChatHistory = async () => {
-      try {
-        const response = await GetHistory(loginId);
-        setDisplayText(response);
-      } catch (error) {
-        console.error("Failed to get chat history:", error);
-      }
-    };
-    getChatHistory();
-    console.log("Get History: ");
-    console.log(`${displayText}`);
-    console.log("displayTextの型:", typeof displayText);
+    if (loginId !== "") {
+      const getChatHistory = async () => {
+        try {
+          const response = await GetHistory(loginId);
+          setDisplayText(response);
+        } catch (error) {
+          console.error("Failed to get chat history:", error);
+        }
+      };
+      getChatHistory();
+    }
   }, [loginId]); // loginIdが取得できたら実行する
 
   ////////////////////
