@@ -34,15 +34,15 @@ const Chat2: React.FC = () => {
   //////////////////////
   const [loginId, setLoginId] = useState<string>("");
   useEffect(() => {
+    const getAuthenticatedUser = async () => {
+      const { username, userId, signInDetails } = await getCurrentUser();
+      const session = await fetchAuthSession({ forceRefresh: true });
+      if (signInDetails?.loginId) {
+        setLoginId(signInDetails.loginId);
+      }
+    };
     getAuthenticatedUser();
-  }, []);
-  const getAuthenticatedUser = async () => {
-    const { username, userId, signInDetails } = await getCurrentUser();
-    const session = await fetchAuthSession({ forceRefresh: true });
-    if (signInDetails?.loginId) {
-      setLoginId(signInDetails.loginId);
-    }
-  };
+  }, [loginId]);
 
   ///////////////////////////////////////////////////
   /// Initial Setting & Websocket Recieve Message ///
