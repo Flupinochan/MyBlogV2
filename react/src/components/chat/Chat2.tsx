@@ -162,7 +162,7 @@ const Chat2: React.FC = () => {
       PostHistory(postHistoryChat);
       setPendingPostHistory(false);
     }
-  }, [displayText, pendingMessage, wsStatus]);
+  }, [pendingPostHistory]);
 
   const sendChatOnClick = () => {
     if (textareaRef.current) {
