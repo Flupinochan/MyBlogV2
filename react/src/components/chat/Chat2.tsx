@@ -43,6 +43,9 @@ const Chat2: React.FC = () => {
       setLoginId(signInDetails.loginId);
     }
   };
+  useEffect(() => {
+    getAuthenticatedUser();
+  }, []);
   // Hubで認証関連(サインアップやサインアウト)のイベントリスナーを設定可能
   Hub.listen("auth", async (data) => {
     switch (data.payload.event) {
