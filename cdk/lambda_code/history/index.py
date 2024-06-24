@@ -174,7 +174,7 @@ def post_chat_history(event):
 # Delete Chat History
 # ----------------------------------------------------------------------
 # @xray_recorder.capture("elete_chat_history")
-def elete_chat_history(event):
+def delete_chat_history(event):
     try:
         login_id = event["queryStringParameters"]["loginid"]
         dynamodb_client.delete_item(

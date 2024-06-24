@@ -41,7 +41,6 @@ const Chat2: React.FC = () => {
     const session = await fetchAuthSession({ forceRefresh: true });
     if (signInDetails?.loginId) {
       setLoginId(signInDetails.loginId);
-      console.log("loginId: ", loginId);
     }
   };
 
@@ -125,6 +124,7 @@ const Chat2: React.FC = () => {
       };
       getChatHistory();
     }
+    console.log("loginId: ", loginId);
   }, [loginId]); // loginIdが取得できたら実行する
 
   ////////////////////
