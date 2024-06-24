@@ -44,9 +44,9 @@ const Chat2: React.FC = () => {
     }
   };
 
-  /////////////////////////////////
-  /// Websocket Recieve Message ///
-  /////////////////////////////////
+  ///////////////////////////////////////////////////
+  /// Initial Setting & Websocket Recieve Message ///
+  ///////////////////////////////////////////////////
   const [displayText, setDisplayText] = useState<ChatContent[]>([]);
   const [tmpClaude, setTmpClaude] = useState<ChatContent[]>([]);
   const [tmpGPT, setTmpGPT] = useState<ChatContent[]>([]);
@@ -149,9 +149,12 @@ const Chat2: React.FC = () => {
 
       sendMessages();
     }
-    ////////////////////
-    /// Post History ///
-    ////////////////////
+  }, [displayText, pendingMessage]);
+
+  ////////////////////
+  /// Post History ///
+  ////////////////////
+  useEffect(() => {
     if (pendingPostHistory) {
       console.log("Post History:");
       console.log(`${displayText}`);
@@ -164,6 +167,9 @@ const Chat2: React.FC = () => {
     }
   }, [pendingPostHistory]);
 
+  //////////////////////////////////
+  /// Send Click -> Send Message ///
+  //////////////////////////////////
   const sendChatOnClick = () => {
     if (textareaRef.current) {
       const message = textareaRef.current.value;
@@ -184,9 +190,9 @@ const Chat2: React.FC = () => {
     }
   };
 
-  ///////////////////
-  /// Merge Array ///
-  ///////////////////
+  ///////////////////////////////////
+  /// Merge Array -> Post History ///
+  ///////////////////////////////////
   const [claudeCount, setClaudeCount] = useState<number>(0);
   const [gptCount, setGptCount] = useState<number>(0);
   const mergeClaude = () => {
