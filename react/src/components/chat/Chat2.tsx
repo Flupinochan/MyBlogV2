@@ -156,14 +156,16 @@ const Chat2: React.FC = () => {
   ////////////////////
   useEffect(() => {
     if (pendingPostHistory) {
-      console.log("Post History:");
-      console.log(`${displayText}`);
-      const postHistoryChat = {
-        loginid: loginId,
-        content: displayText,
+      const postChatHistory = async () => {
+        console.log("Post History");
+        const postHistoryChat = {
+          loginid: loginId,
+          content: displayText,
+        };
+        await PostHistory(postHistoryChat);
+        await setPendingPostHistory(false);
       };
-      PostHistory(postHistoryChat);
-      setPendingPostHistory(false);
+      postChatHistory();
     }
   }, [pendingPostHistory]);
 
