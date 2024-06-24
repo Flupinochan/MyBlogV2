@@ -51,10 +51,12 @@ except Exception:
 # @xray_recorder.capture("main")
 def main(event):
     try:
-        if event["http_method"] == "GET":
+        if event["path"] == "/gethistory":
+            log.debug("Get Chat History")
             response = get_chat_history(event)
-        elif event["http_method"] == "GET":
+        elif event["path"] == "/posthistory":
             response = post_chat_history(event)
+            log.debug("Post Chat History")
         return response
 
     except Exception as e:

@@ -80,7 +80,7 @@ export class Myblogv2Stack2 extends cdk.Stack {
       role: lambdaRole,
       code: lambda.Code.fromAsset(path.join(__dirname, "../../lambda_code/history")),
       timeout: Duration.minutes(15),
-      logGroup: lambdaLogGroupChat,
+      logGroup: lambdaLogGroupChatDB,
       layers: [lambdaLayer],
       environment: {
         DYNAMODB_TABLE: param.dynamodb.tableName,

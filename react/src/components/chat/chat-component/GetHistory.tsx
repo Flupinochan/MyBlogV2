@@ -15,10 +15,10 @@ export const GetHistory = async (loginid: string): Promise<ChatContent[]> => {
   try {
     const response = await axios.get(api_url, { params: params });
     if (response.status === 200) {
-      console.log("Get History: 200");
+      console.log(`Get History: ${response.status}`);
       return response.data;
     } else if (response.status === 204) {
-      console.log("Get History: 204");
+      console.log(`Get History: ${response.status}`);
       return [];
     } else {
       throw new Error(`Unexpected status code: ${response.status}`);
