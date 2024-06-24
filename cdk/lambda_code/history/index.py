@@ -71,7 +71,7 @@ def main(event):
 def get_chat_history(event):
     try:
         login_id = event["queryStringParameters"]["loginid"]
-        log.debug(f"login_id: {login_id}")
+        log.debug(f"loginid: {login_id}")
         response = dynamodb_client.get_item(
             TableName=DYNAMODB_TABLE,
             Key={

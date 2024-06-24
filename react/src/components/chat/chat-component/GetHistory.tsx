@@ -18,7 +18,6 @@ export const GetHistory = async (loginid: string): Promise<ChatContent[]> => {
     console.log(response);
     if (response.data) {
       console.log(`Get History: ${response.status}`);
-      console.log(`Response Data: ${response.data}`);
       return response.data;
     } else if (response.status === 204) {
       console.log(`Get History: ${response.status}`);

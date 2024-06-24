@@ -125,7 +125,7 @@ const Chat2: React.FC = () => {
     console.log("Get History: ");
     console.log(`${displayText}`);
     console.log("displayTextの型:", typeof displayText);
-  }, []);
+  }, [loginId]); // loginIdが取得できたら実行する
 
   ////////////////////
   /// Send Message ///
