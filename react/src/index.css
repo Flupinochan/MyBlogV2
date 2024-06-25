@@ -49,7 +49,7 @@
     @apply text-red-500 border-l-4 border-red-500 pl-4 italic;
   }
   .red-base code {
-    @apply text-red-500 bg-gray-700;
+    @apply text-red-500;
   }
   .red-base table {
     @apply text-red-500 border-collapse border border-red-500;
@@ -158,7 +158,7 @@
     @apply text-green-500 border-l-4 border-green-500 pl-4 italic;
   }
   .green-base code {
-    @apply text-green-500 bg-gray-700;
+    @apply text-green-500;
   }
   .green-base table {
     @apply text-green-500 border-collapse border border-green-500;
@@ -267,7 +267,7 @@
     @apply text-amber-400 border-l-4 border-amber-400 pl-4 italic;
   }
   .amber-base code {
-    @apply text-amber-400 bg-gray-700;
+    @apply text-amber-400;
   }
   .amber-base table {
     @apply text-amber-400 border-collapse border border-amber-400;
@@ -376,7 +376,7 @@
     @apply text-blue-500 border-l-4 border-blue-500 pl-4 italic;
   }
   .blue-base code {
-    @apply text-blue-500 bg-gray-700;
+    @apply text-blue-500;
   }
   .blue-base table {
     @apply text-blue-500 border-collapse border border-blue-500;
