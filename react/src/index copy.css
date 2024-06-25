@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .green-base {
+    @apply text-green-500;
+  }
+  .green-base h1,
+  .green-base h2,
+  .green-base h3,
+  .green-base h4,
+  .green-base h5,
+  .green-base h6 {
+    @apply text-green-500;
+  }
+  .green-base h1 {
+    @apply text-4xl;
+  }
+  .green-base h2 {
+    @apply text-3xl;
+  }
+  .green-base h3 {
+    @apply text-2xl;
+  }
+  .green-base h4 {
+    @apply text-xl;
+  }
+  .green-base h5 {
+    @apply text-lg;
+  }
+  .green-base h6 {
+    @apply text-base;
+  }
+  .green-base ul {
+    @apply text-green-500 list-disc list-inside;
+  }
+  .green-base li::marker {
+    @apply text-green-500;
+  }
+  .green-base b,
+  .green-base strong {
+    @apply text-green-500 font-bold;
+  }
+  .green-base blockquote {
+    @apply text-green-500 border-l-4 border-green-500 pl-4 italic;
+  }
+  .green-base code {
+    @apply text-green-500;
+  }
+  .green-base table {
+    @apply text-green-500 border-collapse border border-green-500;
+  }
+  .green-base th,
+  .green-base td {
+    @apply border border-green-500 px-4 py-2;
+  }
+  .green-base th {
+    @apply bg-green-500;
+  }
+  .green-base hr {
+    @apply border-green-500;
+  }
+  .green-base a{
+    @apply text-blue-500;
+  }
+}
+
+@layer components {
+  .amber-base {
+    @apply text-amber-500;
+  }
+  .amber-base h1,
+  .amber-base h2,
+  .amber-base h3,
+  .amber-base h4,
+  .amber-base h5,
+  .amber-base h6 {
+    @apply text-amber-500;
+  }
+  .amber-base h1 {
+    @apply text-4xl;
+  }
+  .amber-base h2 {
+    @apply text-3xl;
+  }
+  .amber-base h3 {
+    @apply text-2xl;
+  }
+  .amber-base h4 {
+    @apply text-xl;
+  }
+  .amber-base h5 {
+    @apply text-lg;
+  }
+  .amber-base h6 {
+    @apply text-base;
+  }
+  .amber-base ul {
+    @apply text-amber-500 list-disc list-inside;
+  }
+  .amber-base li::marker {
+    @apply text-amber-500;
+  }
+  .amber-base b,
+  .amber-base strong {
+    @apply text-amber-500 font-bold;
+  }
+  .amber-base blockquote {
+    @apply text-amber-500 border-l-4 border-amber-500 pl-4 italic;
+  }
+  .amber-base code {
+    @apply text-amber-500;
+  }
+  .amber-base table {
+    @apply text-amber-500 border-collapse border border-amber-500;
+  }
+  .amber-base th,
+  .amber-base td {
+    @apply border border-amber-500 px-4 py-2;
+  }
+  .amber-base th {
+    @apply bg-amber-500;
+  }
+  .amber-base hr {
+    @apply border-amber-500;
+  }
+  .amber-base a{
+    @apply text-blue-500;
+  }
+}
+
+@layer components {
+  .red-base {
+    @apply text-red-500;
+  }
+  .red-base h1,
+  .red-base h2,
+  .red-base h3,
+  .red-base h4,
+  .red-base h5,
+  .red-base h6 {
+    @apply text-red-500;
+  }
+  .red-base h1 {
+    @apply text-4xl;
+  }
+  .red-base h2 {
+    @apply text-3xl;
+  }
+  .red-base h3 {
+    @apply text-2xl;
+  }
+  .red-base h4 {
+    @apply text-xl;
+  }
+  .red-base h5 {
+    @apply text-lg;
+  }
+  .red-base h6 {
+    @apply text-base;
+  }
+  .red-base ul {
+    @apply text-red-500 list-disc list-inside;
+  }
+  .red-base li::marker {
+    @apply text-red-500;
+  }
+  .red-base b,
+  .red-base strong {
+    @apply text-red-500 font-bold;
+  }
+  .red-base blockquote {
+    @apply text-red-500 border-l-4 border-red-500 pl-4 italic;
+  }
+  .red-base code {
+    @apply text-red-500;
+  }
+  .red-base table {
+    @apply text-red-500 border-collapse border border-red-500;
+  }
+  .red-base th,
+  .red-base td {
+    @apply border border-red-500 px-4 py-2;
+  }
+  .red-base th {
+    @apply bg-red-500;
+  }
+  .red-base hr {
+    @apply border-red-500;
+  }
+  .red-base a{
+    @apply text-blue-500;
+  }
+}

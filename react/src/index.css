@@ -3,137 +3,10 @@
 @tailwind utilities;
 
 @layer components {
-  .green-base {
-    @apply text-green-500;
-  }
-  .green-base h1,
-  .green-base h2,
-  .green-base h3,
-  .green-base h4,
-  .green-base h5,
-  .green-base h6 {
-    @apply text-green-500;
-  }
-  .green-base h1 {
-    @apply text-4xl;
-  }
-  .green-base h2 {
-    @apply text-3xl;
-  }
-  .green-base h3 {
-    @apply text-2xl;
-  }
-  .green-base h4 {
-    @apply text-xl;
-  }
-  .green-base h5 {
-    @apply text-lg;
-  }
-  .green-base h6 {
-    @apply text-base;
-  }
-  .green-base ul {
-    @apply text-green-500 list-disc list-inside;
-  }
-  .green-base li::marker {
-    @apply text-green-500;
-  }
-  .green-base b,
-  .green-base strong {
-    @apply text-green-500 font-bold;
-  }
-  .green-base blockquote {
-    @apply text-green-500 border-l-4 border-green-500 pl-4 italic;
-  }
-  .green-base code {
-    @apply text-green-500;
-  }
-  .green-base table {
-    @apply text-green-500 border-collapse border border-green-500;
-  }
-  .green-base th,
-  .green-base td {
-    @apply border border-green-500 px-4 py-2;
-  }
-  .green-base th {
-    @apply bg-green-500;
-  }
-  .green-base hr {
-    @apply border-green-500;
-  }
-  .green-base a{
-    @apply text-blue-500;
-  }
-}
-
-@layer components {
-  .amber-base {
-    @apply text-amber-500;
-  }
-  .amber-base h1,
-  .amber-base h2,
-  .amber-base h3,
-  .amber-base h4,
-  .amber-base h5,
-  .amber-base h6 {
-    @apply text-amber-500;
-  }
-  .amber-base h1 {
-    @apply text-4xl;
-  }
-  .amber-base h2 {
-    @apply text-3xl;
-  }
-  .amber-base h3 {
-    @apply text-2xl;
-  }
-  .amber-base h4 {
-    @apply text-xl;
-  }
-  .amber-base h5 {
-    @apply text-lg;
-  }
-  .amber-base h6 {
-    @apply text-base;
-  }
-  .amber-base ul {
-    @apply text-amber-500 list-disc list-inside;
-  }
-  .amber-base li::marker {
-    @apply text-amber-500;
-  }
-  .amber-base b,
-  .amber-base strong {
-    @apply text-amber-500 font-bold;
-  }
-  .amber-base blockquote {
-    @apply text-amber-500 border-l-4 border-amber-500 pl-4 italic;
-  }
-  .amber-base code {
-    @apply text-amber-500;
-  }
-  .amber-base table {
-    @apply text-amber-500 border-collapse border border-amber-500;
-  }
-  .amber-base th,
-  .amber-base td {
-    @apply border border-amber-500 px-4 py-2;
-  }
-  .amber-base th {
-    @apply bg-amber-500;
-  }
-  .amber-base hr {
-    @apply border-amber-500;
-  }
-  .amber-base a{
-    @apply text-blue-500;
-  }
-}
-
-@layer components {
   .red-base {
     @apply text-red-500;
   }
+
   .red-base h1,
   .red-base h2,
   .red-base h3,
@@ -142,6 +15,7 @@
   .red-base h6 {
     @apply text-red-500;
   }
+
   .red-base h1 {
     @apply text-4xl;
   }
@@ -160,6 +34,7 @@
   .red-base h6 {
     @apply text-base;
   }
+
   .red-base ul {
     @apply text-red-500 list-disc list-inside;
   }
@@ -189,7 +64,376 @@
   .red-base hr {
     @apply border-red-500;
   }
-  .red-base a{
+  .red-base a {
     @apply text-blue-500;
+  }
+
+  @screen md {
+    .red-base h1 {
+      @apply text-5xl;
+    }
+    .red-base h2 {
+      @apply text-4xl;
+    }
+    .red-base h3 {
+      @apply text-3xl;
+    }
+    .red-base h4 {
+      @apply text-2xl;
+    }
+    .red-base h5 {
+      @apply text-xl;
+    }
+    .red-base h6 {
+      @apply text-lg;
+    }
+  }
+
+  @screen lg {
+    .red-base h1 {
+      @apply text-6xl;
+    }
+    .red-base h2 {
+      @apply text-5xl;
+    }
+    .red-base h3 {
+      @apply text-4xl;
+    }
+    .red-base h4 {
+      @apply text-3xl;
+    }
+    .red-base h5 {
+      @apply text-2xl;
+    }
+    .red-base h6 {
+      @apply text-xl;
+    }
+  }
+}
+
+@layer components {
+  .green-base {
+    @apply text-green-500;
+  }
+
+  .green-base h1,
+  .green-base h2,
+  .green-base h3,
+  .green-base h4,
+  .green-base h5,
+  .green-base h6 {
+    @apply text-green-500;
+  }
+
+  .green-base h1 {
+    @apply text-4xl;
+  }
+  .green-base h2 {
+    @apply text-3xl;
+  }
+  .green-base h3 {
+    @apply text-2xl;
+  }
+  .green-base h4 {
+    @apply text-xl;
+  }
+  .green-base h5 {
+    @apply text-lg;
+  }
+  .green-base h6 {
+    @apply text-base;
+  }
+
+  .green-base ul {
+    @apply text-green-500 list-disc list-inside;
+  }
+  .green-base li::marker {
+    @apply text-green-500;
+  }
+  .green-base b,
+  .green-base strong {
+    @apply text-green-500 font-bold;
+  }
+  .green-base blockquote {
+    @apply text-green-500 border-l-4 border-green-500 pl-4 italic;
+  }
+  .green-base code {
+    @apply text-green-500;
+  }
+  .green-base table {
+    @apply text-green-500 border-collapse border border-green-500;
+  }
+  .green-base th,
+  .green-base td {
+    @apply border border-green-500 px-4 py-2;
+  }
+  .green-base th {
+    @apply bg-green-500;
+  }
+  .green-base hr {
+    @apply border-green-500;
+  }
+  .green-base a {
+    @apply text-blue-500;
+  }
+
+  @screen md {
+    .green-base h1 {
+      @apply text-5xl;
+    }
+    .green-base h2 {
+      @apply text-4xl;
+    }
+    .green-base h3 {
+      @apply text-3xl;
+    }
+    .green-base h4 {
+      @apply text-2xl;
+    }
+    .green-base h5 {
+      @apply text-xl;
+    }
+    .green-base h6 {
+      @apply text-lg;
+    }
+  }
+
+  @screen lg {
+    .green-base h1 {
+      @apply text-6xl;
+    }
+    .green-base h2 {
+      @apply text-5xl;
+    }
+    .green-base h3 {
+      @apply text-4xl;
+    }
+    .green-base h4 {
+      @apply text-3xl;
+    }
+    .green-base h5 {
+      @apply text-2xl;
+    }
+    .green-base h6 {
+      @apply text-xl;
+    }
+  }
+}
+
+@layer components {
+  .amber-base {
+    @apply text-amber-400;
+  }
+
+  .amber-base h1,
+  .amber-base h2,
+  .amber-base h3,
+  .amber-base h4,
+  .amber-base h5,
+  .amber-base h6 {
+    @apply text-amber-400;
+  }
+
+  .amber-base h1 {
+    @apply text-4xl;
+  }
+  .amber-base h2 {
+    @apply text-3xl;
+  }
+  .amber-base h3 {
+    @apply text-2xl;
+  }
+  .amber-base h4 {
+    @apply text-xl;
+  }
+  .amber-base h5 {
+    @apply text-lg;
+  }
+  .amber-base h6 {
+    @apply text-base;
+  }
+
+  .amber-base ul {
+    @apply text-amber-400 list-disc list-inside;
+  }
+  .amber-base li::marker {
+    @apply text-amber-400;
+  }
+  .amber-base b,
+  .amber-base strong {
+    @apply text-amber-400 font-bold;
+  }
+  .amber-base blockquote {
+    @apply text-amber-400 border-l-4 border-amber-400 pl-4 italic;
+  }
+  .amber-base code {
+    @apply text-amber-400;
+  }
+  .amber-base table {
+    @apply text-amber-400 border-collapse border border-amber-400;
+  }
+  .amber-base th,
+  .amber-base td {
+    @apply border border-amber-400 px-4 py-2;
+  }
+  .amber-base th {
+    @apply bg-amber-400;
+  }
+  .amber-base hr {
+    @apply border-amber-400;
+  }
+  .amber-base a {
+    @apply text-blue-500;
+  }
+
+  @screen md {
+    .amber-base h1 {
+      @apply text-5xl;
+    }
+    .amber-base h2 {
+      @apply text-4xl;
+    }
+    .amber-base h3 {
+      @apply text-3xl;
+    }
+    .amber-base h4 {
+      @apply text-2xl;
+    }
+    .amber-base h5 {
+      @apply text-xl;
+    }
+    .amber-base h6 {
+      @apply text-lg;
+    }
+  }
+
+  @screen lg {
+    .amber-base h1 {
+      @apply text-6xl;
+    }
+    .amber-base h2 {
+      @apply text-5xl;
+    }
+    .amber-base h3 {
+      @apply text-4xl;
+    }
+    .amber-base h4 {
+      @apply text-3xl;
+    }
+    .amber-base h5 {
+      @apply text-2xl;
+    }
+    .amber-base h6 {
+      @apply text-xl;
+    }
+  }
+}
+
+@layer components {
+  .blue-base {
+    @apply text-blue-500;
+  }
+
+  .blue-base h1,
+  .blue-base h2,
+  .blue-base h3,
+  .blue-base h4,
+  .blue-base h5,
+  .blue-base h6 {
+    @apply text-blue-500;
+  }
+
+  .blue-base h1 {
+    @apply text-4xl;
+  }
+  .blue-base h2 {
+    @apply text-3xl;
+  }
+  .blue-base h3 {
+    @apply text-2xl;
+  }
+  .blue-base h4 {
+    @apply text-xl;
+  }
+  .blue-base h5 {
+    @apply text-lg;
+  }
+  .blue-base h6 {
+    @apply text-base;
+  }
+
+  .blue-base ul {
+    @apply text-blue-500 list-disc list-inside;
+  }
+  .blue-base li::marker {
+    @apply text-blue-500;
+  }
+  .blue-base b,
+  .blue-base strong {
+    @apply text-blue-500 font-bold;
+  }
+  .blue-base blockquote {
+    @apply text-blue-500 border-l-4 border-blue-500 pl-4 italic;
+  }
+  .blue-base code {
+    @apply text-blue-500;
+  }
+  .blue-base table {
+    @apply text-blue-500 border-collapse border border-blue-500;
+  }
+  .blue-base th,
+  .blue-base td {
+    @apply border border-blue-500 px-4 py-2;
+  }
+  .blue-base th {
+    @apply bg-blue-500;
+  }
+  .blue-base hr {
+    @apply border-blue-500;
+  }
+  .blue-base a {
+    @apply text-blue-500;
+  }
+
+  @screen md {
+    .blue-base h1 {
+      @apply text-5xl;
+    }
+    .blue-base h2 {
+      @apply text-4xl;
+    }
+    .blue-base h3 {
+      @apply text-3xl;
+    }
+    .blue-base h4 {
+      @apply text-2xl;
+    }
+    .blue-base h5 {
+      @apply text-xl;
+    }
+    .blue-base h6 {
+      @apply text-lg;
+    }
+  }
+
+  @screen lg {
+    .blue-base h1 {
+      @apply text-6xl;
+    }
+    .blue-base h2 {
+      @apply text-5xl;
+    }
+    .blue-base h3 {
+      @apply text-4xl;
+    }
+    .blue-base h4 {
+      @apply text-3xl;
+    }
+    .blue-base h5 {
+      @apply text-2xl;
+    }
+    .blue-base h6 {
+      @apply text-xl;
+    }
   }
 }

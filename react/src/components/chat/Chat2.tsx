@@ -245,15 +245,18 @@ const Chat2: React.FC = () => {
     <Authenticator>
       <div className="p-10">
         <div className="flex">
-          <p className="pr-10">{loginId} さん　こんにちは!!</p>
+          <div className="flex">
+            <p className="pr-2 text-purple-500">{loginId}</p>
+            <p className="pr-10">さん　こんにちは!!</p>
+          </div>
           <p className="text-2xl">
-            <span className="whitespace-nowrap text-green-500">Claude</span> VS <span className="text-amber-400">Chat GPT</span>
+            <span className="whitespace-nowrap green-base">Claude</span> VS <span className="amber-base">Chat GPT</span>
           </p>
         </div>
         <div className="p-2" />
         <div className="flex">
-          <p className="w-1/2 text-green-500">Claudeの選ばれた回数 {claudeCount}</p>
-          <p className="text-amber-400">Chat GPTの選ばれた回数 {gptCount}</p>
+          <p className="w-1/2 green-base">Claudeの選ばれた回数 {claudeCount}</p>
+          <p className="amber-base">Chat GPTの選ばれた回数 {gptCount}</p>
         </div>
         <div className="p-2" />
         <Textarea color="primary" ref={textareaRef} placeholder="メッセージを入力する" variant="bordered" minRows={1} className="max-w-md" />
@@ -273,9 +276,9 @@ const Chat2: React.FC = () => {
           displayText.map((chat, index) => (
             <div key={index}>
               {/* Roleが前回と異なる場合、roleを表示 */}
-              {index === 0 || chat.role !== displayText[index - 1].role ? <p className={chat.role === "user" ? "text-blue-500" : "text-red-500"}>{chat.role}</p> : null}
+              {index === 0 || chat.role !== displayText[index - 1].role ? <p className={chat.role === "user" ? "blue-base" : "red-base"}>{chat.role}</p> : null}
               {/* <p className={chat.role === "user" ? "text-blue-500 border-blue-500 border-b-1" : "text-red-500 border-red-500 border-b-1"}>{chat.message}</p> */}
-              <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className={chat.role === "user" ? "prose md:prose-lg lg:prose-xl text-blue-500 border-blue-500 border-b-1" : "red-base prose md:prose-lg lg:prose-xl text-red-500 border-red-500 border-b-1"}>
+              <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className={chat.role === "user" ? "blue-base border-b-1" : "red-base border-b-1"}>
                 {chat.message}
               </ReactMarkdown>
             </div>
@@ -288,11 +291,11 @@ const Chat2: React.FC = () => {
                 {chat.role === "claude" && (
                   <>
                     {index === 0 || chat.role !== tmpClaude[index - 1]?.role ? <p>{chat.role}</p> : null}
-                    <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className="prose md:prose-lg lg:prose-xl text-green-500 border-green-500 border-b-1">
+                    <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className="green-base border-b-1">
                       {chat.message}
                     </ReactMarkdown>
                     <div className="p-2" />
-                    <Button className="text-green-500 border-green-500" variant="ghost" onClick={mergeClaude}>
+                    <Button className="green-base" variant="ghost" onClick={mergeClaude}>
                       Claudeを選ぶ
                     </Button>
                   </>
@@ -302,15 +305,15 @@ const Chat2: React.FC = () => {
           {tmpGPT &&
             tmpGPT.length > 0 &&
             tmpGPT.map((chat, index) => (
-              <div key={index} className="amber-base text-amber-500 w-1/2 ml-auto">
+              <div key={index} className="amber-base w-1/2 ml-auto">
                 {chat.role === "gpt" && (
                   <>
                     {index === 0 || chat.role !== tmpGPT[index - 1]?.role ? <p>{chat.role}</p> : null}
-                    <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className="prose md:prose-lg lg:prose-xl text-amber-500 border-amber-500 border-b-1">
+                    <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className="amber-base border-b-1">
                       {chat.message}
                     </ReactMarkdown>
                     <div className="p-2" />
-                    <Button className="text-amber-500 border-amber-500" variant="ghost" onClick={mergeGPT}>
+                    <Button className="amber-base" variant="ghost" onClick={mergeGPT}>
                       Chat GPTを選ぶ
                     </Button>
                   </>
