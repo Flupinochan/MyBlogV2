@@ -52,6 +52,8 @@ export class Myblogv2Stack4 extends cdk.Stack {
       compatibleRuntimes: [lambda.Runtime.PYTHON_3_12],
       removalPolicy: cdk.RemovalPolicy.DESTROY,
     });
+    const layerArn = '';
+    const datadogLayer = lambda.LayerVersion.fromLayerVersionArn(this, 'DatadogLayer', layerArn);
     const lambdaChat = new lambda.Function(this, param.lambda.functionName, {
       functionName: param.lambda.functionName,
       runtime: lambda.Runtime.PYTHON_3_12,
@@ -60,9 +62,10 @@ export class Myblogv2Stack4 extends cdk.Stack {
       code: lambda.Code.fromAsset(path.join(__dirname, "../../lambda_code/chat2/")),
       timeout: Duration.minutes(15),
       logGroup: lambdaLogGroupChat,
-      layers: [lambdaLayer],
+      layers: [lambdaLayer, datadogLayer],
       environment: {
-        BUCKET_NAME: "test",
+        DD_API_KEY: param.lambda.ddApiKey,
+        DD_SITE: "ap1.datadoghq.com"
       },
       tracing: lambda.Tracing.ACTIVE,
     });

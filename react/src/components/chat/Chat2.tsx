@@ -250,7 +250,7 @@ const Chat2: React.FC = () => {
             <p className="pr-10">さん　こんにちは!!</p>
           </div>
           <p className="text-2xl">
-            <span className="whitespace-nowrap green-base">Claude</span> VS <span className="amber-base">Chat GPT</span>
+            <span className="whitespace-nowrap green-base">Claude</span> VS <span className="amber-base pr-10">Chat GPT</span>
           </p>
         </div>
         <div className="p-2" />

@@ -4,6 +4,7 @@ export class MyBlogParam4V2 {
     roleName: "metalmental-myblogv2-websocket-lambda-role",
     logGroupName: "metalmental-myblogv2-websocket-lambda-logs",
     layerName: "metalmental-myblogv2-websocket-lambda-layer",
+    ddApiKey: "",
   };
   stepFunctions = {
     stateMachineName: "metalmental-myblogv2-websocket-sfn",
