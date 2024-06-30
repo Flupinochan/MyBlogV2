@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.2089a9cd.css",
-    "main.js": "/static/js/main.dba3e61c.js",
+    "main.css": "/static/css/main.71c06e50.css",
+    "main.js": "/static/js/main.6f3fac01.js",
     "static/media/title_img.png": "/static/media/title_img.228375c70ec57f04d963.png",
     "static/media/blog_img.jpg": "/static/media/blog_img.6f6316f24e301b07475e.jpg",
     "static/media/youtube_img.jpg": "/static/media/youtube_img.57176d7be547726d3b04.jpg",
     "static/media/metalmental-blog-title.png": "/static/media/metalmental-blog-title.d86b5fac09b2d4f5cad5.png",
     "index.html": "/index.html",
-    "main.2089a9cd.css.map": "/static/css/main.2089a9cd.css.map",
-    "main.dba3e61c.js.map": "/static/js/main.dba3e61c.js.map"
+    "main.71c06e50.css.map": "/static/css/main.71c06e50.css.map",
+    "main.6f3fac01.js.map": "/static/js/main.6f3fac01.js.map"
   },
   "entrypoints": [
-    "static/css/main.2089a9cd.css",
-    "static/js/main.dba3e61c.js"
+    "static/css/main.71c06e50.css",
+    "static/js/main.6f3fac01.js"
   ]
 }

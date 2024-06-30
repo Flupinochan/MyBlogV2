@@ -242,87 +242,87 @@ const Chat2: React.FC = () => {
   /// Display ///
   ///////////////
   return (
-    // <Authenticator>
-    <div className="p-10">
-      <div className="flex">
+    <Authenticator>
+      <div className="p-10">
         <div className="flex">
-          <p className="pr-2 text-purple-500">{loginId}</p>
-          <p className="pr-10">さん　こんにちは!!</p>
-        </div>
-        <p className="text-2xl">
-          <span className="whitespace-nowrap green-base">Claude</span> VS <span className="amber-base pr-10">Chat GPT</span>
-        </p>
-      </div>
-      <div className="p-2" />
-      <div className="flex">
-        <p className="w-1/2 green-base">Claudeの選ばれた回数 {claudeCount}</p>
-        <p className="amber-base">Chat GPTの選ばれた回数 {gptCount}</p>
-      </div>
-      <div className="p-2" />
-      <Textarea color="primary" ref={textareaRef} placeholder="メッセージを入力する" variant="bordered" minRows={1} className="max-w-md" />
-      <div className="p-2" />
-      <Button color="primary" variant="ghost" onClick={sendChatOnClick} isLoading={!isTrue} className="mr-10">
-        送信
-      </Button>
-      <Button color="primary" variant="ghost" onClick={deleteChatOnClick} isLoading={!isTrue} className="mr-10">
-        履歴削除
-      </Button>
-      <Button color="primary" variant="ghost" onClick={signOutOnClick} isLoading={!isTrue}>
-        サインアウト
-      </Button>
-      <div className="p-2" />
-      {displayText &&
-        displayText.length > 0 &&
-        displayText.map((chat, index) => (
-          <div key={index}>
-            {/* Roleが前回と異なる場合、roleを表示 */}
-            {index === 0 || chat.role !== displayText[index - 1].role ? <p className={chat.role === "user" ? "blue-base" : "red-base"}>{chat.role}</p> : null}
-            {/* <p className={chat.role === "user" ? "text-blue-500 border-blue-500 border-b-1" : "text-red-500 border-red-500 border-b-1"}>{chat.message}</p> */}
-            <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className={chat.role === "user" ? "prose md:prose-lg lg:prose-xl blue-base border-b-1 text-blue-500 border-blue-500" : "prose md:prose-lg lg:prose-xl red-base border-b-1 text-red-500 border-red-500"}>
-              {chat.message}
-            </ReactMarkdown>
+          <div className="flex">
+            <p className="pr-2 text-purple-500">{loginId}</p>
+            <p className="pr-10">さん　こんにちは!!</p>
           </div>
-        ))}
-      <div className="flex">
-        {tmpClaude &&
-          tmpClaude.length > 0 &&
-          tmpClaude.map((chat, index) => (
-            <div key={index} className="green-base text-green-500 w-1/2">
-              {chat.role === "claude" && (
-                <>
-                  {index === 0 || chat.role !== tmpClaude[index - 1]?.role ? <p>{chat.role}</p> : null}
-                  <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className="prose md:prose-lg lg:prose-xl green-base border-b-1 text-green-500 border-green-500">
-                    {chat.message}
-                  </ReactMarkdown>
-                  <div className="p-2" />
-                  <Button className="green-base text-green-500 border-green-500" variant="ghost" onClick={mergeClaude}>
-                    Claudeを選ぶ
-                  </Button>
-                </>
-              )}
+          <p className="text-2xl">
+            <span className="whitespace-nowrap green-base">Claude</span> VS <span className="amber-base pr-10">Chat GPT</span>
+          </p>
+        </div>
+        <div className="p-2" />
+        <div className="flex">
+          <p className="w-1/2 green-base">Claudeの選ばれた回数 {claudeCount}</p>
+          <p className="amber-base">Chat GPTの選ばれた回数 {gptCount}</p>
+        </div>
+        <div className="p-2" />
+        <Textarea color="primary" ref={textareaRef} placeholder="メッセージを入力する" variant="bordered" minRows={1} className="max-w-md" />
+        <div className="p-2" />
+        <Button color="primary" variant="ghost" onClick={sendChatOnClick} isLoading={!isTrue} className="mr-10">
+          送信
+        </Button>
+        <Button color="primary" variant="ghost" onClick={deleteChatOnClick} isLoading={!isTrue} className="mr-10">
+          履歴削除
+        </Button>
+        <Button color="primary" variant="ghost" onClick={signOutOnClick} isLoading={!isTrue}>
+          サインアウト
+        </Button>
+        <div className="p-2" />
+        {displayText &&
+          displayText.length > 0 &&
+          displayText.map((chat, index) => (
+            <div key={index}>
+              {/* Roleが前回と異なる場合、roleを表示 */}
+              {index === 0 || chat.role !== displayText[index - 1].role ? <p className={chat.role === "user" ? "blue-base" : "red-base"}>{chat.role}</p> : null}
+              {/* <p className={chat.role === "user" ? "text-blue-500 border-blue-500 border-b-1" : "text-red-500 border-red-500 border-b-1"}>{chat.message}</p> */}
+              <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className={chat.role === "user" ? "prose md:prose-lg lg:prose-xl blue-base border-b-1 text-blue-500 border-blue-500" : "prose md:prose-lg lg:prose-xl red-base border-b-1 text-red-500 border-red-500"}>
+                {chat.message}
+              </ReactMarkdown>
             </div>
           ))}
-        {tmpGPT &&
-          tmpGPT.length > 0 &&
-          tmpGPT.map((chat, index) => (
-            <div key={index} className="amber-base w-1/2 ml-auto">
-              {chat.role === "gpt" && (
-                <>
-                  {index === 0 || chat.role !== tmpGPT[index - 1]?.role ? <p>{chat.role}</p> : null}
-                  <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className="prose md:prose-lg lg:prose-xl amber-base border-b-1 text-amber-400 border-amber-400">
-                    {chat.message}
-                  </ReactMarkdown>
-                  <div className="p-2" />
-                  <Button className="amber-base text-amber-400 border-amber-400" variant="ghost" onClick={mergeGPT}>
-                    Chat GPTを選ぶ
-                  </Button>
-                </>
-              )}
-            </div>
-          ))}
+        <div className="flex">
+          {tmpClaude &&
+            tmpClaude.length > 0 &&
+            tmpClaude.map((chat, index) => (
+              <div key={index} className="green-base text-green-500 w-1/2">
+                {chat.role === "claude" && (
+                  <>
+                    {index === 0 || chat.role !== tmpClaude[index - 1]?.role ? <p>{chat.role}</p> : null}
+                    <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className="prose md:prose-lg lg:prose-xl green-base border-b-1 text-green-500 border-green-500">
+                      {chat.message}
+                    </ReactMarkdown>
+                    <div className="p-2" />
+                    <Button className="green-base text-green-500 border-green-500" variant="ghost" onClick={mergeClaude}>
+                      Claudeを選ぶ
+                    </Button>
+                  </>
+                )}
+              </div>
+            ))}
+          {tmpGPT &&
+            tmpGPT.length > 0 &&
+            tmpGPT.map((chat, index) => (
+              <div key={index} className="amber-base w-1/2 ml-auto">
+                {chat.role === "gpt" && (
+                  <>
+                    {index === 0 || chat.role !== tmpGPT[index - 1]?.role ? <p>{chat.role}</p> : null}
+                    <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]} className="prose md:prose-lg lg:prose-xl amber-base border-b-1 text-amber-400 border-amber-400">
+                      {chat.message}
+                    </ReactMarkdown>
+                    <div className="p-2" />
+                    <Button className="amber-base text-amber-400 border-amber-400" variant="ghost" onClick={mergeGPT}>
+                      Chat GPTを選ぶ
+                    </Button>
+                  </>
+                )}
+              </div>
+            ))}
+        </div>
       </div>
-    </div>
-    // </Authenticator>
+    </Authenticator>
   );
 };
 

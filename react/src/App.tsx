@@ -41,7 +41,7 @@ const App: React.FC = () => {
             </div>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/chat" element={<Chat2 />} />
+              {/* <Route path="/chat" element={<Chat2 />} /> */}
             </Routes>
             <div className="relative">
               <ScrollToTopButton />
