@@ -6,6 +6,7 @@ import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 
 import TitleImg from "./img/title_img.png";
 import CButton from "./tool/CButton";
+import CButton2 from "./tool/CButton2";
 
 const Title: React.FC = () => {
   return (
@@ -39,8 +40,8 @@ const Title: React.FC = () => {
           </p>
           <p className="pt-10 leading-relaxed text-sm">フロントエンドからバックエンド、インフラまで手掛けるゴッドハンドエンジニアです</p>
           <img className="pt-20" src={TitleImg} alt="title" id="title" />
-          <div data-aos="fade-in" data-aos-offset="100">
-            <CButton />
+          <div data-aos="fade-in">
+            <CButton2 />
           </div>
         </div>
       </div>

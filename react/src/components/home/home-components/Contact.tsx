@@ -28,7 +28,7 @@ const Contact: React.FC = () => {
         </div>
       </div>
       {/* md以下 */}
-      <div className="md:hidden justify-center py-10 px-10">
+      <div className="md:hidden justify-center py-10 px-10" id="contact2">
         <H2 text="Contact" />
         <div className="my-10 pt-3 pb-5 text-primary">
           <div data-aos="fade-in" data-aos-offset="100">

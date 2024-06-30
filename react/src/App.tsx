@@ -30,7 +30,7 @@ const App: React.FC = () => {
   /// Rendering ///
   /////////////////
   return (
-    <div className="min-h-screen bg-background text-foreground dark px-3 pb-96 lg:px-5 tracking-wide text-xl">
+    <div className="min-h-screen bg-background text-foreground dark px-3 pb-32 lg:px-5 tracking-wide text-xl">
       <NextUIProvider>
         <main className="min-h-screen">
           <Router>
