@@ -178,7 +178,7 @@ export class Myblogv2Stack extends cdk.Stack {
           version: "0.2",
           phases: {
             build: {
-              commands: ["echo s3 sync", "cd ./myreact/build/", `aws s3 sync . s3://${s3Bucket.bucketName} --delete`, "echo remove cloudfront cache", `aws cloudfront create-invalidation --distribution-id ${distribution.distributionId} --paths "/*"`],
+              commands: ["echo s3 sync", "cd ./react/build/", `aws s3 sync . s3://${s3Bucket.bucketName} --delete`, "echo remove cloudfront cache", `aws cloudfront create-invalidation --distribution-id ${distribution.distributionId} --paths "/*"`],
             },
           },
         }),
