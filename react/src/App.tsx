@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { NextUIProvider } from "@nextui-org/react";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import Helmet from "./components/main/Helmet";
 import Header from "./components/main/Header";
@@ -18,6 +20,12 @@ const App: React.FC = () => {
   /// Scroll Bar Setting ///
   //////////////////////////
 
+  ///////////
+  /// AOS ///
+  ///////////
+  useEffect(() => {
+    AOS.init();
+  }, []);
   /////////////////
   /// Rendering ///
   /////////////////

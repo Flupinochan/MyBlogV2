@@ -11,24 +11,40 @@ const Contact: React.FC = () => {
       <div className="hidden md:block pt-16 pb-10 px-28">
         <H2 text="Contact" />
         <div className="my-10 pt-3 pb-5 pl-12 text-primary">
-          <Input className="w-[300px] pb-14" variant="underlined" size="lg" color="primary" placeholder="Enter your name" />
-          <Input className="w-[300px] pb-20" variant="underlined" size="lg" color="primary" placeholder="Enter your email" />
-          <Textarea className="w-[400px] pb-20" variant="bordered" labelPlacement="outside" minRows={2} placeholder="Enter your message" size="lg" color="primary" />
-          <Button className="text-xl px-4 py-6" color="primary" radius="none" variant="ghost" endContent={<SendIcon />}>
-            Send
-          </Button>
+          <div data-aos="fade-in" data-aos-offset="300">
+            <Input className="w-[300px] pb-14" variant="underlined" size="lg" color="primary" placeholder="Enter your name" />
+          </div>
+          <div data-aos="fade-in" data-aos-offset="300">
+            <Input className="w-[300px] pb-20" variant="underlined" size="lg" color="primary" placeholder="Enter your email" />
+          </div>
+          <div data-aos="fade-in" data-aos-offset="300">
+            <Textarea className="w-[400px] pb-20" variant="bordered" labelPlacement="outside" minRows={2} placeholder="Enter your message" size="lg" color="primary" />
+          </div>
+          <div data-aos="fade-in" data-aos-offset="300">
+            <Button className="text-xl px-4 py-6" color="primary" radius="none" variant="ghost" endContent={<SendIcon />}>
+              Send
+            </Button>
+          </div>
         </div>
       </div>
       {/* md以下 */}
       <div className="md:hidden justify-center py-10 px-10">
         <H2 text="Contact" />
         <div className="my-10 pt-3 pb-5 text-primary">
-          <Input className="w-[290px] pb-14" variant="underlined" size="lg" color="primary" placeholder="Enter your name" />
-          <Input className="w-[290px] pb-20" variant="underlined" size="lg" color="primary" placeholder="Enter your email" />
-          <Textarea className="w-[290px] pb-20" variant="bordered" labelPlacement="outside" minRows={2} placeholder="Enter your message" size="lg" color="primary" />
-          <Button className="text-xl px-4 py-6" color="primary" radius="none" variant="ghost" endContent={<SendIcon />}>
-            Send
-          </Button>
+          <div data-aos="fade-in" data-aos-offset="200">
+            <Input className="w-[290px] pb-14" variant="underlined" size="lg" color="primary" placeholder="Enter your name" />
+          </div>
+          <div data-aos="fade-in" data-aos-offset="200">
+            <Input className="w-[290px] pb-20" variant="underlined" size="lg" color="primary" placeholder="Enter your email" />
+          </div>
+          <div data-aos="fade-in" data-aos-offset="200">
+            <Textarea className="w-[290px] pb-20" variant="bordered" labelPlacement="outside" minRows={2} placeholder="Enter your message" size="lg" color="primary" />
+          </div>
+          <div data-aos="fade-in" data-aos-offset="200">
+            <Button className="text-xl px-4 py-6" color="primary" radius="none" variant="ghost" endContent={<SendIcon />}>
+              Send
+            </Button>
+          </div>
         </div>
       </div>
     </div>

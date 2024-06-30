@@ -17,7 +17,7 @@ const H3: React.FC<Props> = (props) => {
   return (
     <div className="flex pb-5">
       <div className={`px-1 border-l-1 border-y-1 ${border}`} />
-      <div className={`tracking-widest px-2 text-2xl ${text}`}>{props.text}</div>
+      <div className={`tracking-widest px-2 text-xl ${text}`}>{props.text}</div>
       <div className={`px-1 border-r-1 border-y-1 ${border}`} />
     </div>
   );

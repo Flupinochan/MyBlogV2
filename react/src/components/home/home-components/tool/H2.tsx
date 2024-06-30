@@ -18,7 +18,7 @@ const H2: React.FC<Text> = (props) => {
       {/* md以下 */}
       <div className="md:hidden flex">
         <div className="px-3 border-1 border-primary" />
-        <div className="text-4xl px-5 tracking-widest">{props.text}</div>
+        <div className="text-2xl px-5 tracking-widest">{props.text}</div>
         <div className="flex items-center">
           <div className="border-b-1 border-primary" />
         </div>

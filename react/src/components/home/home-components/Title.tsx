@@ -34,12 +34,16 @@ const Title: React.FC = () => {
       {/* md以下 */}
       <div className="md:hidden justify-center">
         <div className="flex flex-col items-center pt-5 px-10">
-          <p className="text-5xl pt-5">
+          <p className="text-2xl pt-5">
             <span className="text-primary leading-snug">MetalMental</span> is a <span className="text-primary">Full-Stack</span> and <span className="text-primary">SRE</span> engineer
           </p>
-          <p className="pt-10 leading-relaxed">フロントエンドからバックエンド、インフラまで手掛けるゴッドハンドエンジニアです</p>
-          <img className="pt-20" src={TitleImg} alt="title" />
-          <CButton />
+          <p className="pt-10 leading-relaxed text-sm">フロントエンドからバックエンド、インフラまで手掛けるゴッドハンドエンジニアです</p>
+          <div data-aos="fade-in" data-aos-anchor-placement="bottom-bottom">
+            <img className="pt-20" src={TitleImg} alt="title" id="title" />
+          </div>
+          <div data-aos="fade-in" data-aos-anchor-placement="bottom-bottom">
+            <CButton />
+          </div>
         </div>
       </div>
     </div>

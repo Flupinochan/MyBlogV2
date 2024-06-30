@@ -37,13 +37,13 @@ const SkillSet2: React.FC<Props> = (props) => {
   return (
     <div className={`flex flex-col justify-center items-center my-10 p-10 ${text} border-1 ${border}`}>
       <div>{props.icon}</div>
-      <p className="text-3xl pt-4 tracking-widest">{props.text1}</p>
-      <div className="flex flex-row flex-wrap pt-5 pb-4">
+      <p className="text-2xl pt-4 tracking-widest">{props.text1}</p>
+      <div className="flex flex-row flex-wrap pt-5 pb-4 text-sm">
         <p className={`mb-3 mr-3 py-1 px-3 rounded-md ${bg}`}>{props.text2}</p>
         <p className={`mb-3 py-1 px-3 rounded-md ${bg}`}>{props.text3}</p>
         <p className={`mb-3 py-1 px-3 rounded-md ${bg}`}>{props.text4}</p>
       </div>
-      <div className="leading-relaxed">{props.text5}</div>
+      <div className="leading-relaxed text-sm">{props.text5}</div>
     </div>
   );
 };
