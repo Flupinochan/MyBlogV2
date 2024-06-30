@@ -33,7 +33,7 @@ const ScrollToTopButton = () => {
 
   const scrollToTop = () => {
     scroll.scrollToTop({
-      duration: 100,
+      duration: 300,
       smooth: true,
     });
   };
