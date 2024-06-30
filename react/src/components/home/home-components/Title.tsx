@@ -38,10 +38,8 @@ const Title: React.FC = () => {
             <span className="text-primary leading-snug">MetalMental</span> is a <span className="text-primary">Full-Stack</span> and <span className="text-primary">SRE</span> engineer
           </p>
           <p className="pt-10 leading-relaxed text-sm">フロントエンドからバックエンド、インフラまで手掛けるゴッドハンドエンジニアです</p>
-          <div data-aos="fade-in" data-aos-anchor-placement="bottom-bottom">
-            <img className="pt-20" src={TitleImg} alt="title" id="title" />
-          </div>
-          <div data-aos="fade-in" data-aos-anchor-placement="bottom-bottom">
+          <img className="pt-20" src={TitleImg} alt="title" id="title" />
+          <div data-aos="fade-in" data-aos-offset="100">
             <CButton />
           </div>
         </div>
