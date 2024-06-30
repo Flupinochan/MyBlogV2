@@ -3,9 +3,9 @@ import { Link, Button } from "@nextui-org/react";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 
 import H2 from "./tool/H2";
+import CButton from "./tool/CButton";
 import BlogImg from "./img/blog_img.jpg";
 import YoutubeImg from "./img/youtube_img.jpg";
-import CButton from "./tool/CButton";
 
 const Content: React.FC = () => {
   return (

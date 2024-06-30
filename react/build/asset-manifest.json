@@ -1,17 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.8f98c9a1.css",
-    "main.js": "/static/js/main.ad456fd5.js",
+    "main.css": "/static/css/main.702661c0.css",
+    "main.js": "/static/js/main.aa422db1.js",
+    "static/media/orochi.png": "/static/media/orochi.a0780e8ea0b608a7c1c5.png",
     "static/media/title_img.png": "/static/media/title_img.228375c70ec57f04d963.png",
     "static/media/blog_img.jpg": "/static/media/blog_img.6f6316f24e301b07475e.jpg",
     "static/media/youtube_img.jpg": "/static/media/youtube_img.57176d7be547726d3b04.jpg",
+    "static/media/akaricchan.png": "/static/media/akaricchan.8cca778e232d5061118f.png",
     "static/media/metalmental-blog-title.png": "/static/media/metalmental-blog-title.d86b5fac09b2d4f5cad5.png",
     "index.html": "/index.html",
-    "main.8f98c9a1.css.map": "/static/css/main.8f98c9a1.css.map",
-    "main.ad456fd5.js.map": "/static/js/main.ad456fd5.js.map"
+    "main.702661c0.css.map": "/static/css/main.702661c0.css.map",
+    "main.aa422db1.js.map": "/static/js/main.aa422db1.js.map"
   },
   "entrypoints": [
-    "static/css/main.8f98c9a1.css",
-    "static/js/main.ad456fd5.js"
+    "static/css/main.702661c0.css",
+    "static/js/main.aa422db1.js"
   ]
 }

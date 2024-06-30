@@ -7,7 +7,7 @@ const AboutMe: React.FC = () => {
   return (
     <div>
       {/* md以上 */}
-      <div className="hidden md:block pt-16 pb-1 px-28">
+      <div className="hidden md:block pt-16 pb-1 px-28 bg-cover bg-center bg-orochi-img">
         <H2 text="About Me" />
         <div className="my-10 pt-3 pb-5 pl-12">
           <div data-aos="fade-in" data-aos-offset="200">

@@ -6,7 +6,11 @@ const { color } = require("framer-motion");
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "orochi-img": "url('./components/home/home-components/img/orochi.png')",
+      },
+    },
   },
   darkMode: "class",
   plugins: [
