@@ -13,16 +13,16 @@ const Home: React.FC = () => {
         <div data-aos="fade-in">
           <Title />
         </div>
-        <div className="bg-black bg-opacity-30 mt-32 md:mx-4" data-aos="fade-in" data-aos-offset="200">
+        <div className="bg-black bg-opacity-30 mt-32 md:mx-4" data-aos="fade-in" data-aos-offset="250">
           <Skills />
         </div>
-        <div className="bg-black bg-opacity-30 mt-10 md:mx-4" data-aos="fade-in" data-aos-offset="200">
+        <div className="bg-black bg-opacity-30 mt-10 md:mx-4" data-aos="fade-in" data-aos-offset="250">
           <AboutMe />
         </div>
-        <div className="bg-black bg-opacity-30 mt-10 md:mx-4" data-aos="fade-in" data-aos-offset="200">
+        <div className="bg-black bg-opacity-30 mt-10 md:mx-4" data-aos="fade-in" data-aos-offset="250">
           <Content />
         </div>
-        <div className="bg-black bg-opacity-30 mt-10 md:mx-4" data-aos="fade-in" data-aos-offset="200">
+        <div className="bg-black bg-opacity-30 mt-10 md:mx-4" data-aos="fade-in" data-aos-offset="250">
           <Contact />
         </div>
       </div>

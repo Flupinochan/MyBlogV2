@@ -64,10 +64,10 @@ export class Myblogv2Stack4 extends cdk.Stack {
       logGroup: lambdaLogGroupChat,
       // layers: [lambdaLayer, datadogLayer],
       layers: [lambdaLayer],
-      environment: {
-        DD_API_KEY: param.lambda.ddApiKey,
-        DD_SITE: "ap1.datadoghq.com"
-      },
+      // environment: {
+      //   DD_API_KEY: param.lambda.ddApiKey,
+      //   DD_SITE: "ap1.datadoghq.com"
+      // },
       tracing: lambda.Tracing.ACTIVE,
     });
     //////////////////////////////////////////////////

@@ -13,16 +13,16 @@ const Contact: React.FC = () => {
         <div>
           <H2 text="Contact" />
           <div className="my-10 pt-3 pb-5 pl-12 text-primary">
-            <div data-aos="fade-in" data-aos-offset="200">
+            <div data-aos="fade-in" data-aos-offset="250">
               <Input className="w-[200px] pb-14" variant="underlined" size="lg" color="primary" placeholder="Enter your name" />
             </div>
-            <div data-aos="fade-in" data-aos-offset="200">
+            <div data-aos="fade-in" data-aos-offset="250">
               <Input className="w-[200px] pb-20" variant="underlined" size="lg" color="primary" placeholder="Enter your email" />
             </div>
-            <div data-aos="fade-in" data-aos-offset="200">
+            <div data-aos="fade-in" data-aos-offset="250">
               <Textarea className="w-[400px] pb-20" variant="bordered" labelPlacement="outside" minRows={2} placeholder="Enter your message" size="lg" color="primary" />
             </div>
-            <div data-aos="fade-in" data-aos-offset="200">
+            <div data-aos="fade-in" data-aos-offset="250">
               <Button className="text-xl px-4 py-6" color="primary" radius="none" variant="ghost" endContent={<SendIcon />}>
                 Send
               </Button>

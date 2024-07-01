@@ -5,8 +5,8 @@ import boto3
 from typing import TypedDict
 from botocore.config import Config
 from openai import OpenAI
-from datadog_lambda.metric import lambda_metric
-from datadog_lambda.wrapper import datadog_lambda_wrapper
+# from datadog_lambda.metric import lambda_metric
+# from datadog_lambda.wrapper import datadog_lambda_wrapper
 
 # from aws_xray_sdk.core import xray_recorder
 # from aws_xray_sdk.core import patch_all
@@ -16,14 +16,14 @@ from LoggingClass import LoggingClass
 # ----------------------------------------------------------------------
 # Environment Variable Setting
 # ----------------------------------------------------------------------
-try:
-    DD_API_KEY = os.environ["DD_API_KEY"]
-    DD_SITE = os.environ["DD_SITE"]
-    DD_LLMOBS_ENABLED = 1
-    DD_LLMOBS_ML_APP = "onboarding-quickstart"
-    DD_LLMOBS_AGENTLESS_ENABLED = 1
-except KeyError:
-    raise Exception("Environment variable is not defined.")
+# try:
+#     # DD_API_KEY = os.environ["DD_API_KEY"]
+#     # DD_SITE = os.environ["DD_SITE"]
+#     # DD_LLMOBS_ENABLED = 1
+#     # DD_LLMOBS_ML_APP = "onboarding-quickstart"
+#     # DD_LLMOBS_AGENTLESS_ENABLED = 1
+# except KeyError:
+#     raise Exception("Environment variable is not defined.")
 
 # ----------------------------------------------------------------------
 # Global Variable Setting
@@ -230,13 +230,13 @@ def response_gpt(key, org, pj):
 # Entry Point
 # ----------------------------------------------------------------------
 # @xray_recorder.capture("lambda_handler")
-@datadog_lambda_wrapper
+# @datadog_lambda_wrapper
 def lambda_handler(event, context):
     try:
-        tags = ["name:ChatLambda"]
-        metric = "lambda.ChatLambda"
-        value = 1
-        lambda_metric(metric, value, tags=tags)
+        # tags = ["name:ChatLambda"]
+        # metric = "lambda.ChatLambda"
+        # value = 1
+        # lambda_metric(metric, value, tags=tags)
 
         log.debug(f"Event: {event}")
         global ROUTE_KEY, CONNECT_ID, DOMAIN_NAME, STAGE_NAME, MESSAGE
