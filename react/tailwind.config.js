@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "orochi-img": "url('./components/home/home-components/img/orochi.png')",
+        "orochi-img": "url('./components/home/home-components/image/orochi.png')",
       },
     },
   },

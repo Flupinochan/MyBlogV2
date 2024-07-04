@@ -8,9 +8,9 @@ const Menu: React.FC = () => {
     <div>
       {/* md以上 */}
       <div className="hidden md:flex group w-full justify-evenly text-2xl pt-5">
-        <a className="c-menu" href="https://www.metalmental.net/" target="_blank" rel="noopener noreferrer">
+        <Link className="c-menu" to="blog">
           Blog
-        </a>
+        </Link>
         <a className="c-menu" href="https://www.youtube.com/@Flupinochan" target="_blank" rel="noopener noreferrer">
           Youtube
         </a>

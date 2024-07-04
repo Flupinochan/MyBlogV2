@@ -5,6 +5,8 @@ import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import BlogList from "./components/blog/tool/BlogList";
+import BlogRender from "./components/blog/tool/BlogRender";
 
 import Helmet from "./components/main/Helmet";
 import Header from "./components/main/Header";
@@ -42,6 +44,8 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/chat" element={<Chat2 />} />
+              <Route path="/blog" element={<BlogList />} />
+              <Route path="/blog/:postId" element={<BlogRender />} />
             </Routes>
             <div className="relative">
               <ScrollToTopButton />

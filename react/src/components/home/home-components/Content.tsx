@@ -4,8 +4,8 @@ import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 
 import H2 from "./tool/H2";
 import CButton from "./tool/CButton";
-import BlogImg from "./img/blog_img.jpg";
-import YoutubeImg from "./img/youtube_img.jpg";
+const BlogImg = "/images/home/blog_img.jpg";
+const YoutubeImg = "/images/home/youtube_img.jpg";
 
 const Content: React.FC = () => {
   return (

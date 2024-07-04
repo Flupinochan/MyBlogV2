@@ -4,9 +4,10 @@ import { Link, Button } from "@nextui-org/react";
 // import { Button } from "@nextui-org/button";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 
-import TitleImg from "./img/title_img.png";
 import CButton from "./tool/CButton";
 import CButton2 from "./tool/CButton2";
+
+const titleImage = "/images/home/title_img.png";
 
 const Title: React.FC = () => {
   return (
@@ -29,7 +30,7 @@ const Title: React.FC = () => {
               </p>
             </div>
           </div>
-          <img src={TitleImg} alt="title" />
+          <img src={titleImage} alt="title" />
         </div>
       </div>
       {/* md以下 */}
@@ -39,7 +40,7 @@ const Title: React.FC = () => {
             <span className="text-primary leading-snug">MetalMental</span> is a <span className="text-primary">Full-Stack</span> and <span className="text-primary">SRE</span> engineer
           </p>
           <p className="pt-10 leading-relaxed text-sm">フロントエンドからバックエンド、インフラまで手掛けるゴッドハンドエンジニアです</p>
-          <img className="pt-20" src={TitleImg} alt="title" id="title" />
+          <img className="pt-20" src={titleImage} alt="title" id="title" />
           <div data-aos="fade-in">
             <CButton2 />
           </div>
