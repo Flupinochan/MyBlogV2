@@ -1,11 +1,21 @@
-import React, { useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import VanillaTilt from "vanilla-tilt";
 import { getAllPostsData, getSortedPostsData } from "./ManageBlog";
 import H2 from "../../home/home-components/tool/H2";
+import { Pagination } from "@nextui-org/react";
 
 const BlogList: React.FC = () => {
   const posts = getSortedPostsData(getAllPostsData());
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 2; // 1ページあたりのアイテム数
+  const totalPages = Math.ceil(posts.length / itemsPerPage); // ページ数の合計
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page); // ページを切り替え
+  };
+  const startIndex = (currentPage - 1) * itemsPerPage; // ページごとの要素の始まりは、× itemsPerPage
+  const selectedPosts = posts.slice(startIndex, startIndex + itemsPerPage); // ページで表示する要素数は、startIndexからitemsPerPageを足した数
 
   const tiltRef = useCallback((node: HTMLDivElement) => {
     if (node) {
@@ -28,8 +38,8 @@ const BlogList: React.FC = () => {
     <div className="px-28 pt-20">
       <H2 text="Blog Archive" />
       <div className="pt-14 pl-8">
-        <div className="flex flex-row flex-wrap gap-14">
-          {posts.map((post) => (
+        <div className="flex flex-row flex-wrap gap-14 justify-center">
+          {selectedPosts.map((post) => (
             <div key={post.name}>
               <Link to={`/blog/${post.name}`}>
                 <div className="flex flex-col h-full w-[600px] bg-black rounded-3xl bg-opacity-15 py-6 px-8" ref={tiltRef}>
@@ -47,6 +57,9 @@ const BlogList: React.FC = () => {
               </Link>
             </div>
           ))}
+        </div>
+        <div className="flex justify-center pt-10">
+          <Pagination total={totalPages} initialPage={1} onChange={handlePageChange} size="lg" variant="flat" showControls showShadow />
         </div>
       </div>
     </div>

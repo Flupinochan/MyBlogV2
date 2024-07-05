@@ -7,21 +7,11 @@ interface Text {
 const H2: React.FC<Text> = (props) => {
   return (
     <div>
-      {/* md以上 */}
-      <div className="hidden md:flex">
+      <div className="flex">
         <div className="px-3 border-1 border-primary" />
         <div className="text-4xl px-5 tracking-widest">{props.text}</div>
-
         <div className="flex flex-grow items-center w-auto m-auto">
           <div className="flex flex-grow w-full m-auto border-b-1 border-primary" />
-        </div>
-      </div>
-      {/* md以下 */}
-      <div className="md:hidden flex">
-        <div className="px-3 border-1 border-primary" />
-        <div className="text-2xl px-5 tracking-widest">{props.text}</div>
-        <div className="flex items-center">
-          <div className="border-b-1 border-primary" />
         </div>
       </div>
     </div>

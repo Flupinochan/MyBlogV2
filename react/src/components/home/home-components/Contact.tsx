@@ -9,9 +9,9 @@ const Contact: React.FC = () => {
   return (
     <div id="contact">
       {/* md以上 */}
-      <div className="hidden md:flex pt-16 pb-10 px-28">
-        <div>
-          <H2 text="Contact" />
+      <div className="hidden md:block pt-16 pb-10 px-28">
+        <H2 text="Contact" />
+        <div className="flex flex-row">
           <div className="my-10 pt-3 pb-5 pl-12 text-primary">
             <div>
               <Input className="w-[200px] pb-14" variant="underlined" size="lg" color="primary" placeholder="Enter your name" />
@@ -28,9 +28,9 @@ const Contact: React.FC = () => {
               </Button>
             </div>
           </div>
-        </div>
-        <div className="ml-auto">
-          <img src={Akaricchan} alt="Akaricchan.png" />
+          <div className="ml-auto">
+            <img src={Akaricchan} alt="Akaricchan.png" />
+          </div>
         </div>
       </div>
       {/* md以下 */}

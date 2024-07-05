@@ -16,8 +16,6 @@ export interface BlogPostMetadata {
   image: {
     url: string;
     alt: string;
-    width?: number;
-    height?: number;
   };
 }
 

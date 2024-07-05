@@ -9,8 +9,6 @@ export const metadata = {
   image: {
     url: "/images/blog/SAM.jpg",
     alt: "React Hooksの図解",
-    width: 1200,
-    height: 630,
   },
 };
 
