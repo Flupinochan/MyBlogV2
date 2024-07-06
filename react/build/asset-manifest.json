@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.cbb3ddb6.css",
-    "main.js": "/static/js/main.6d2666c5.js",
+    "main.js": "/static/js/main.4333afae.js",
     "static/media/orochi.png": "/static/media/orochi.a0780e8ea0b608a7c1c5.png",
     "static/media/metalmental-blog-title.png": "/static/media/metalmental-blog-title.d86b5fac09b2d4f5cad5.png",
     "index.html": "/index.html",
     "main.cbb3ddb6.css.map": "/static/css/main.cbb3ddb6.css.map",
-    "main.6d2666c5.js.map": "/static/js/main.6d2666c5.js.map"
+    "main.4333afae.js.map": "/static/js/main.4333afae.js.map"
   },
   "entrypoints": [
     "static/css/main.cbb3ddb6.css",
-    "static/js/main.6d2666c5.js"
+    "static/js/main.4333afae.js"
   ]
 }

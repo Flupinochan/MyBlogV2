@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import VanillaTilt from "vanilla-tilt";
 import { getAllPostsData, getSortedPostsData } from "./ManageBlog";
@@ -7,6 +7,9 @@ import { Pagination } from "@nextui-org/react";
 
 const BlogList: React.FC = () => {
   const posts = getSortedPostsData(getAllPostsData());
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 2; // 1ページあたりのアイテム数
@@ -43,7 +46,7 @@ const BlogList: React.FC = () => {
             {selectedPosts.map((post) => (
               <div key={post.name}>
                 <Link to={`/blog/${post.name}`}>
-                  <div className="flex flex-col h-full w-[350px] md:w-[600px] bg-black rounded-3xl bg-opacity-15 py-6 px-8" ref={tiltRef}>
+                  <div className="flex flex-col h-full w-[350px] md:w-[600px] bg-black border-primary border-1 rounded-3xl bg-opacity-15 py-6 px-8" ref={tiltRef}>
                     <div className="flex-grow">
                       <div className="text-2xl pb-1">{post.title}</div>
                       <div className="flex justify-center mt-2">

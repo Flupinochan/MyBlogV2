@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 
@@ -8,13 +8,14 @@ import H2 from "../tool/H2";
 
 const BlogPost: React.FC = () => {
   const { postId } = useParams<{ postId: string }>();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [postId]);
   const PostComponent = BlogArchive[postId as keyof typeof BlogArchive] as BlogPostComponent;
-
+  const { metadata } = PostComponent;
   if (!PostComponent) {
     return <div>記事が見つかりません</div>;
   }
-
-  const { metadata } = PostComponent;
 
   return (
     <div data-aos="fade-in">
