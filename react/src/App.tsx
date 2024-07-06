@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { NextUIProvider } from "@nextui-org/react";
-import SimpleBar from "simplebar-react";
-import "simplebar-react/dist/simplebar.min.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
 import BlogList from "./components/blog/tool/BlogList";
 import BlogRender from "./components/blog/tool/BlogRender";
 
@@ -21,6 +20,14 @@ const App: React.FC = () => {
   //////////////////////////
   /// Scroll Bar Setting ///
   //////////////////////////
+  const fixedRef = useRef<HTMLDivElement>(null);
+  const [fixedHeight, setFixedHeight] = useState(0);
+
+  useEffect(() => {
+    if (fixedRef.current) {
+      setFixedHeight(fixedRef.current.offsetHeight);
+    }
+  }, []);
 
   ///////////
   /// AOS ///
@@ -32,7 +39,7 @@ const App: React.FC = () => {
   /// Rendering ///
   /////////////////
   return (
-    <div className="min-h-screen bg-background text-foreground dark px-3 pb-32 lg:px-5 tracking-wide text-xl">
+    <div className="min-h-screen bg-background text-foreground dark px-3 pb-32 lg:px-5 tracking-wide text-sm md:text-xl">
       <NextUIProvider>
         <main className="min-h-screen">
           <Router>

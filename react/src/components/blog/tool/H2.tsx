@@ -9,7 +9,7 @@ const H2: React.FC<Text> = (props) => {
     <div>
       <div className="flex">
         <div className="px-3 border-1 border-primary" />
-        <div className="text-4xl px-5 tracking-widest">{props.text}</div>
+        <div className="text-3xl md:text-4xl px-5 tracking-widest">{props.text}</div>
         <div className="flex flex-grow items-center w-auto m-auto">
           <div className="flex flex-grow w-full m-auto border-b-1 border-primary" />
         </div>

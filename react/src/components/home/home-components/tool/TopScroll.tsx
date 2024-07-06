@@ -14,7 +14,7 @@ const ScrollToTopButton = () => {
         }
         const newTimer = window.setTimeout(() => {
           setIsScrolling(false);
-        }, 2000);
+        }, 5000);
         setTimer(newTimer);
       } else {
         setIsScrolling(false);

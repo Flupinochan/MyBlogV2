@@ -1,12 +1,10 @@
 import React from "react";
-import { Link } from "@nextui-org/react";
 
 import H3 from "../tool/H3";
 import H4 from "../tool/H4";
 import B from "../tool/B";
 import Spacer from "../tool/Spacer";
 import CLink from "../tool/CLink";
-import AppleBillComIcon from "/images/blog/appleComBill.png";
 
 export const metadata = {
   date: "2024-03-30",

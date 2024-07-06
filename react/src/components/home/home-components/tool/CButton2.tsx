@@ -12,7 +12,7 @@ const CButton2: React.FC = () => {
 
   return (
     <button onClick={handleScroll} className="md:hidden flex flex-row cursor-pointer border-1 border-primary text-primary w-48 mt-20 p-4 text-center justify-center items-center transition duration-300 hover:bg-primary hover:text-white">
-      <p className="pr-2">Contact me</p>
+      <p className="pr-2 text-xl">Contact me</p>
       <RocketLaunchIcon />
     </button>
   );

@@ -1,9 +1,11 @@
 import React from "react";
+import { Link as Link2 } from "react-router-dom";
 import { Link, Button } from "@nextui-org/react";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 
 import H2 from "./tool/H2";
 import CButton from "./tool/CButton";
+import { Rocket } from "@mui/icons-material";
 const BlogImg = "/images/home/blog_img.jpg";
 const YoutubeImg = "/images/home/youtube_img.jpg";
 
@@ -22,9 +24,12 @@ const Content: React.FC = () => {
             <div data-aos="fade-in" data-aos-offset="250">
               <p className="font-thin pt-4">2024-01-28</p>
               <p className="py-6">AWS SAMを使用したCI/CDの解説</p>
-              <Button className="text-xl w-36 px-4 py-6" color="primary" radius="none" variant="ghost" endContent={<RocketLaunchIcon />}>
-                Go Blog
-              </Button>
+              <Link2 to="blog">
+                <div className="flex flex-row cursor-pointer border-1 border-primary text-primary w-36 p-3 justify-center text-center items-center transition duration-300 hover:bg-primary hover:text-white">
+                  <p className="pr-2">Go Blog</p>
+                  <RocketLaunchIcon />
+                </div>
+              </Link2>
             </div>
           </div>
           <div className="flex flex-col pr-10">
@@ -35,7 +40,7 @@ const Content: React.FC = () => {
             <div data-aos="fade-in" data-aos-offset="250">
               <p className="font-thin pt-4">2023-11-01</p>
               <p className="py-6">ECS Blue/Green Deploymentについてのゆっくり実況</p>
-              <Button className="text-xl w-48 px-4 py-6" href="https://www.youtube.com/@Flupinochan" as={Link} isExternal={true} color="primary" radius="none" variant="ghost" endContent={<RocketLaunchIcon />}>
+              <Button className="text-xl w-44 px-4 py-6" href="https://www.youtube.com/@Flupinochan" as={Link} isExternal={true} color="primary" radius="none" variant="ghost" endContent={<RocketLaunchIcon />}>
                 Go Youtube
               </Button>
             </div>
@@ -54,9 +59,12 @@ const Content: React.FC = () => {
             <div data-aos="fade-in" data-aos-offset="200">
               <p className="font-thin pt-4">2024-01-28</p>
               <p className="py-6">AWS SAMを使用したCI/CDの解説</p>
-              <Button className="text-xl w-36 px-4 py-6" color="primary" radius="none" variant="ghost" endContent={<RocketLaunchIcon />}>
-                Go Blog
-              </Button>
+              <Link2 to="blog">
+                <div className="flex flex-row cursor-pointer border-1 border-primary text-primary w-36 p-3 justify-center text-center items-center transition duration-300 hover:bg-primary hover:text-white">
+                  <p className="pr-2">Go Blog</p>
+                  <RocketLaunchIcon />
+                </div>
+              </Link2>
             </div>
           </div>
           <div className="flex flex-col pr-10">

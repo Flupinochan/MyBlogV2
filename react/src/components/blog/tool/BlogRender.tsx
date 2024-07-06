@@ -17,7 +17,7 @@ const BlogPost: React.FC = () => {
   const { metadata } = PostComponent;
 
   return (
-    <div className="px-28 pt-20">
+    <div className="md:px-28 md:pt-20">
       <div className="flex flex-col justify-center">
         <img className="h-[500px] object-contain bg-black bg-opacity-15" src={metadata.image.url} alt={metadata.image.alt}></img>
         <div className="pt-14 pl-8">
@@ -30,7 +30,7 @@ const BlogPost: React.FC = () => {
             <PostComponent />
           </div>
           <Link to="/blog">
-            <div className="hidden md:flex flex-row cursor-pointer border-1 border-primary text-primary w-56 p-3 mt-20 justify-center text-center items-center transition duration-300 hover:bg-primary hover:text-white">Back to archive list</div>
+            <div className="hidden md:flex flex-row cursor-pointer border-1 border-primary text-primary w-44 p-3 mt-20 justify-center text-center items-center transition duration-300 hover:bg-primary hover:text-white">Back to Blogs</div>
           </Link>
         </div>
       </div>

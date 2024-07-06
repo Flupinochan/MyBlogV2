@@ -7,7 +7,6 @@ import Spacer from "../tool/Spacer";
 import CLink from "../tool/CLink";
 import DoubleImg from "../tool/DoubleImg";
 import Li from "../tool/Li";
-import { Spa } from "@mui/icons-material";
 
 export const metadata = {
   date: "2024-04-18",
@@ -133,7 +132,7 @@ const Blog2: React.FC & { metadata: typeof metadata } = () => {
         <img src="/images/blog/sample.png" alt="sample" />
       </p>
       <Spacer />
-      <H3 text="終わりに" />
+      <H3 text="おわりに" />
       <p>以上、React(SPA)とMonorepoについてのお話でした!</p>
       <Spacer />
       <p>Monorepoは、知っておいて損はないと思います</p>
