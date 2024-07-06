@@ -25,9 +25,7 @@ const CodeSnippet: React.FC<Props> = (props) => {
         style={atomOneDark}
         showLineNumbers
         codeTagProps={{
-          style: {
-            fontSize: "20px",
-          },
+          className: "text-sm md:text-xl",
         }}
       >
         {props.text}

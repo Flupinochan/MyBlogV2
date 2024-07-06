@@ -68,7 +68,7 @@ export class Myblogv2Stack extends cdk.Stack {
       },
       certificate: certificate,
       defaultRootObject: "index.html",
-      domainNames: ["dev.metalmental.net"],
+      domainNames: ["www.metalmental.net"],
       errorResponses: [
         {
           httpStatus: 403,
