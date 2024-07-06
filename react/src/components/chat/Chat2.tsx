@@ -72,7 +72,7 @@ const Chat2: React.FC = () => {
   const [pendingPostHistory, setPendingPostHistory] = useState<boolean>(false);
   const [isTrue, setIsTrue] = useState<boolean>(true);
   useEffect(() => {
-    const wsURL = "wss://dev.metalmental.net/websocket/";
+    const wsURL = "wss://www.metalmental.net/websocket/";
     const initWebSocket = () => {
       const ws = new WebSocket(wsURL);
 

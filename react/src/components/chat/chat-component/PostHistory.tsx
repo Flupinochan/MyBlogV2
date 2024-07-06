@@ -10,7 +10,7 @@ interface history {
 }
 
 export const PostHistory = async (hist: history) => {
-  const api_url = "https://dev.metalmental.net/api/posthistory";
+  const api_url = "https://www.metalmental.net/api/posthistory";
   const requestBody = hist;
   // API Gatewayのリソースポリシーで特定のヘッダーがないと拒否する設定のため注意
   // CloudFrontでヘッダーを追加する

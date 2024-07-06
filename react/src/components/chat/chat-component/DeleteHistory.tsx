@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const DeleteHistory = async (loginid: string) => {
-  const api_url = "https://dev.metalmental.net/api/deletehistory";
+  const api_url = "https://www.metalmental.net/api/deletehistory";
   const params = {
     loginid: loginid,
   };

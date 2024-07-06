@@ -6,7 +6,7 @@ interface ChatContent {
 }
 
 export const sendChat = async (chat: ChatContent): Promise<ChatContent> => {
-  const api_url = "https://dev.metalmental.net/api/chat";
+  const api_url = "https://www.metalmental.net/api/chat";
   const requestBody = chat;
   // API Gatewayのリソースポリシーで特定のヘッダーがないと拒否する設定のため注意
   // CloudFrontでヘッダーを追加する

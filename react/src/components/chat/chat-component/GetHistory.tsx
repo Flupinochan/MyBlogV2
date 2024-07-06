@@ -6,7 +6,7 @@ interface ChatContent {
 }
 
 export const GetHistory = async (loginid: string): Promise<ChatContent[]> => {
-  const api_url = "https://dev.metalmental.net/api/gethistory";
+  const api_url = "https://www.metalmental.net/api/gethistory";
   const params = {
     loginid: loginid,
   };
