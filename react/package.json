@@ -29,6 +29,7 @@
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.3.1",
+    "react-loader-spinner": "^6.1.6",
     "react-markdown": "^9.0.1",
     "react-scripts": "5.0.1",
     "react-svg": "^16.1.34",

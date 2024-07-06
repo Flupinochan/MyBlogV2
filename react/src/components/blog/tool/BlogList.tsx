@@ -35,31 +35,33 @@ const BlogList: React.FC = () => {
   }, []);
 
   return (
-    <div className="px-14 pt-10 md:px-28 md:pt-20">
-      <H2 text="Blog Archive" />
-      <div className="pt-7 md:pt-14 md:pl-8">
-        <div className="flex flex-row flex-wrap gap-14 justify-center">
-          {selectedPosts.map((post) => (
-            <div key={post.name}>
-              <Link to={`/blog/${post.name}`}>
-                <div className="flex flex-col h-full w-[350px] md:w-[600px] bg-black rounded-3xl bg-opacity-15 py-6 px-8" ref={tiltRef}>
-                  <div className="flex-grow">
-                    <div className="text-2xl pb-1">{post.title}</div>
-                    <div className="flex justify-center mt-2">
-                      <img className="h-[350px] object-scale-down" src={post.image.url} alt={post.image.alt}></img>
+    <div data-aos="fade-in">
+      <div className="px-14 pt-10 md:px-28 md:pt-20">
+        <H2 text="Blog Archive" />
+        <div className="pt-7 md:pt-14 md:pl-8">
+          <div className="flex flex-row flex-wrap gap-14 justify-center">
+            {selectedPosts.map((post) => (
+              <div key={post.name}>
+                <Link to={`/blog/${post.name}`}>
+                  <div className="flex flex-col h-full w-[350px] md:w-[600px] bg-black rounded-3xl bg-opacity-15 py-6 px-8" ref={tiltRef}>
+                    <div className="flex-grow">
+                      <div className="text-2xl pb-1">{post.title}</div>
+                      <div className="flex justify-center mt-2">
+                        <img className="h-[350px] object-scale-down" src={post.image.url} alt={post.image.alt}></img>
+                      </div>
+                      <div className="p-4">{post.excerpt}</div>
                     </div>
-                    <div className="p-4">{post.excerpt}</div>
+                    <div className="flex justify-end pt-4">
+                      <div>{post.date}</div>
+                    </div>
                   </div>
-                  <div className="flex justify-end pt-4">
-                    <div>{post.date}</div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
-        <div className="flex justify-center pt-10">
-          <Pagination total={totalPages} initialPage={1} onChange={handlePageChange} size="lg" variant="flat" showControls showShadow />
+                </Link>
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center pt-10">
+            <Pagination total={totalPages} initialPage={1} onChange={handlePageChange} size="lg" variant="flat" showControls showShadow />
+          </div>
         </div>
       </div>
     </div>
