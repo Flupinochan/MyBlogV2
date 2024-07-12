@@ -1,25 +1,25 @@
 import React from "react";
 
 export const metadata = {
-  date: "2024-07-15",
-  title: "Blog4",
-  excerpt: "TypeScriptの型システムについて解説いたします",
-  category: "TypeScript",
-  tags: ["フロントエンド", "JavaScript"],
+  date: "2024-07-07",
+  title: "CodeCatalyst",
+  excerpt: "ソースコード全体を生成AIに読み取らせる!",
+  category: "AWS",
+  tags: ["CodeCatalyst", "CI/CD", "IaC"],
   image: {
-    url: "/images/blog/SAM.jpg",
-    alt: "React Hooksの図解",
+    url: "/images/blog/CodeCatalyst.png",
+    alt: "CodeCatalyst.png",
   },
 };
 
-const Blog2: React.FC & { metadata: typeof metadata } = () => {
+const Blog4: React.FC & { metadata: typeof metadata } = () => {
   return (
     <div>
-      <h1>Blog4</h1>
+      <h1>作成中</h1>
     </div>
   );
 };
 
-Blog2.metadata = metadata;
+Blog4.metadata = metadata;
 
-export default Blog2;
+export default Blog4;
