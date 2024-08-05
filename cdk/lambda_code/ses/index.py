@@ -55,9 +55,10 @@ def main(event):
 # ----------------------------------------------------------------------
 def send_mail(event):
     try:
-        name = event["name"]
-        email = event["email"]
-        message = event["message"]
+        body = json.loads(event['body'])
+        name = body["name"]
+        email = body["email"]
+        message = body["message"]
         response = ses_client.send_email(
             Source="flupino@metalmental.net",
             Destination={

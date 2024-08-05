@@ -136,28 +136,28 @@ export class Myblogv2Stack2 extends cdk.Stack {
         accessLogFormat: apigw.AccessLogFormat.clf(),
         tracingEnabled: true,
       },
-      policy: iam.PolicyDocument.fromJson({
-        Version: "2012-10-17",
-        Statement: [
-          {
-            Effect: "Deny",
-            Principal: "*",
-            Action: "execute-api:Invoke",
-            Resource: "*",
-            Condition: {
-              StringNotEquals: {
-                "aws:Referer": "validate-cfn",
-              },
-            },
-          },
-          {
-            Effect: "Allow",
-            Principal: "*",
-            Action: "execute-api:Invoke",
-            Resource: "*",
-          },
-        ],
-      }),
+      // policy: iam.PolicyDocument.fromJson({
+      //   Version: "2012-10-17",
+      //   Statement: [
+      //     {
+      //       Effect: "Deny",
+      //       Principal: "*",
+      //       Action: "execute-api:Invoke",
+      //       Resource: "*",
+      //       Condition: {
+      //         StringNotEquals: {
+      //           "aws:Referer": "validate-cfn",
+      //         },
+      //       },
+      //     },
+      //     {
+      //       Effect: "Allow",
+      //       Principal: "*",
+      //       Action: "execute-api:Invoke",
+      //       Resource: "*",
+      //     },
+      //   ],
+      // }),
       defaultCorsPreflightOptions: {
         allowOrigins: apigw.Cors.ALL_ORIGINS,
         allowMethods: apigw.Cors.ALL_METHODS,
