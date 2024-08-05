@@ -25,7 +25,7 @@ export class Myblogv2Stack2 extends cdk.Stack {
     const lambdaRole = new iam.Role(this, param.lambda.roleName, {
       roleName: param.lambda.roleName,
       assumedBy: new iam.ServicePrincipal("lambda.amazonaws.com"),
-      managedPolicies: [iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonBedrockFullAccess"), iam.ManagedPolicy.fromAwsManagedPolicyName("CloudWatchFullAccessV2"), iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonS3FullAccess"), iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonDynamoDBFullAccess"), iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonAPIGatewayAdministrator"), iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonAPIGatewayInvokeFullAccess"), iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonSESFullAccess"), iam.ManagedPolicy.fromAwsManagedPolicyName("SecretsManagerReadWrite")],
+      managedPolicies: [iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonBedrockFullAccess"), iam.ManagedPolicy.fromAwsManagedPolicyName("CloudWatchFullAccessV2"), iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonS3FullAccess"), iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonDynamoDBFullAccess"), iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonAPIGatewayAdministrator"), iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonAPIGatewayInvokeFullAccess"), iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonSESFullAccess"), iam.ManagedPolicy.fromAwsManagedPolicyName("SecretsManagerReadWrite"), iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonSESFullAccess")],
       inlinePolicies: {
         inlinePolicy: new iam.PolicyDocument({
           statements: [
@@ -85,6 +85,29 @@ export class Myblogv2Stack2 extends cdk.Stack {
       environment: {
         DYNAMODB_TABLE: param.dynamodb.tableName,
         PRIMARY_KEY: param.dynamodb.primaryKeyName,
+      },
+      tracing: lambda.Tracing.ACTIVE,
+    });
+    ///////////
+    /// SES ///
+    ///////////
+    const lambdaLogGroupSES = new logs.LogGroup(this, param.lambda.logGroupName3, {
+      logGroupName: param.lambda.logGroupName3,
+      retention: logs.RetentionDays.ONE_DAY,
+      logGroupClass: logs.LogGroupClass.STANDARD,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+    });
+    const lambdaSES = new lambda.Function(this, param.lambda.functionName3, {
+      functionName: param.lambda.functionName3,
+      runtime: lambda.Runtime.PYTHON_3_12,
+      handler: "index.lambda_handler",
+      role: lambdaRole,
+      code: lambda.Code.fromAsset(path.join(__dirname, "../../lambda_code/ses")),
+      timeout: Duration.minutes(15),
+      logGroup: lambdaLogGroupSES,
+      layers: [lambdaLayer],
+      environment: {
+        SES: "SES",
       },
       tracing: lambda.Tracing.ACTIVE,
     });
@@ -157,6 +180,26 @@ export class Myblogv2Stack2 extends cdk.Stack {
     apiChat.addMethod(
       "POST",
       new apigw.LambdaIntegration(lambdaChat, {
+        proxy: true,
+      }),
+      {
+        methodResponses: [
+          {
+            statusCode: "200",
+            responseModels: {
+              "application/json": apigw.Model.EMPTY_MODEL,
+            },
+          },
+        ],
+      },
+    );
+    ///////////
+    /// SES ///
+    ///////////
+    const apiSES = apigwLambda.root.addResource("ses");
+    apiSES.addMethod(
+      "POST",
+      new apigw.LambdaIntegration(lambdaSES, {
         proxy: true,
       }),
       {

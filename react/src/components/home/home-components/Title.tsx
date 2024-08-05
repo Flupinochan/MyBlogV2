@@ -39,7 +39,7 @@ const Title: React.FC = () => {
           <p className="text-2xl pt-5">
             <span className="text-primary leading-snug">MetalMental</span> is a <span className="text-primary">Full-Stack</span> and <span className="text-primary">SRE</span> engineer
           </p>
-          <p className="pt-10 leading-relaxed text-sm">フロントエンドからバックエンド、インフラまで手掛けるゴッドハンドエンジニアです</p>
+          <p className="pt-10 leading-relaxed text-sm">フロントエンドからバックエンド、インフラまで手掛けるメタルなメンタルを持つエンジニアです</p>
           <img className="pt-20" src={titleImage} alt="title" id="title" />
           <div data-aos="fade-in">
             <CButton2 />

@@ -6,6 +6,8 @@ export class MyBlogParam2V2 {
     layerName: "metalmental-myblogv2-lambda-layer-chat",
     functionName2: "metalmental-myblogv2-websocket-lambda-db",
     logGroupName2: "metalmental-myblogv2-websocket-lambda-logs-db",
+    functionName3: "metalmental-myblogv2-ses-lambda",
+    logGroupName3: "metalmental-myblogv2-ses-logs",
   };
   apiGateway = {
     logGroupName: "metalmental-myblogv2-apigw-logs",
@@ -14,5 +16,5 @@ export class MyBlogParam2V2 {
   dynamodb = {
     tableName: "metalmental-myblogv2-db",
     primaryKeyName: "id",
-  }
+  };
 }
