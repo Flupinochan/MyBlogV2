@@ -17,9 +17,9 @@ const Menu: React.FC = () => {
         <a className="c-menu" href="https://github.com/Flupinochan/" target="_blank" rel="noopener noreferrer">
           GitHub
         </a>
-        <Link className="c-menu" to="/chat">
+        <a className="c-menu" href="https://www.chatbot.metalmental.net/" target="_blank" rel="noopener noreferrer">
           Tool
-        </Link>
+        </a>
       </div>
       {/* md以下 */}
       <div className="flex md:hidden group w-full justify-evenly text-2xl pt-4">
@@ -32,9 +32,9 @@ const Menu: React.FC = () => {
         <a className="c-menu2" href="https://github.com/Flupinochan/" target="_blank" rel="noopener noreferrer">
           GitHub
         </a>
-        <Link className="c-menu2" to="/chat">
+        <a className="c-menu2" href="https://www.chatbot.metalmental.net/" target="_blank" rel="noopener noreferrer">
           Tool
-        </Link>
+        </a>
       </div>
     </div>
   );
